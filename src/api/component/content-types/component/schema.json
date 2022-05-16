@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "components",
+  "info": {
+    "singularName": "component",
+    "pluralName": "components",
+    "displayName": "component"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    }
+  }
+}

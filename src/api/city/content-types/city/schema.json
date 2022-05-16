@@ -1,0 +1,91 @@
+{
+  "kind": "collectionType",
+  "collectionName": "cities",
+  "info": {
+    "singularName": "city",
+    "pluralName": "cities",
+    "displayName": "city",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "color": {
+      "type": "string"
+    },
+    "active": {
+      "type": "string"
+    },
+    "count": {
+      "type": "string"
+    },
+    "countActive": {
+      "type": "string"
+    },
+    "countDisable": {
+      "type": "string"
+    },
+    "countRetired": {
+      "type": "string"
+    },
+    "clients": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::client.client",
+      "mappedBy": "city"
+    },
+    "tickets": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::ticket.ticket",
+      "mappedBy": "city"
+    },
+    "activationrequests": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::activationrequest.activationrequest",
+      "mappedBy": "city"
+    },
+    "telegrambots": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::telegrambot.telegrambot",
+      "mappedBy": "city"
+    },
+    "users": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "cities"
+    },
+    "mikrotiks": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::mikrotik.mikrotik",
+      "mappedBy": "city"
+    },
+    "neighborhoods": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::neighborhood.neighborhood",
+      "inversedBy": "cities"
+    },
+    "naps": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::nap.nap",
+      "mappedBy": "city"
+    },
+    "material": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::material.material",
+      "mappedBy": "city"
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "naptypes",
+  "info": {
+    "singularName": "naptype",
+    "pluralName": "naptypes",
+    "displayName": "naptype"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "ports": {
+      "type": "integer"
+    },
+    "naps": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::nap.nap",
+      "mappedBy": "naptype"
+    }
+  }
+}

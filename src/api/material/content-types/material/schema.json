@@ -1,0 +1,37 @@
+{
+  "kind": "collectionType",
+  "collectionName": "materials",
+  "info": {
+    "singularName": "material",
+    "pluralName": "materials",
+    "displayName": "material",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "materialhistories": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::materialhistory.materialhistory",
+      "mappedBy": "material"
+    },
+    "city": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::city.city",
+      "inversedBy": "material"
+    },
+    "materialquantities": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::materialquantity.materialquantity",
+      "mappedBy": "material"
+    }
+  }
+}

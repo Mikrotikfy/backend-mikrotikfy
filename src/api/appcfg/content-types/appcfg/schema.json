@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "appcfgs",
+  "info": {
+    "singularName": "appcfg",
+    "pluralName": "appcfgs",
+    "displayName": "appcfg"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "resetSessionToAllUsers": {
+      "type": "boolean"
+    }
+  }
+}

@@ -1,0 +1,144 @@
+{
+  "kind": "collectionType",
+  "collectionName": "clients",
+  "info": {
+    "singularName": "client",
+    "pluralName": "clients",
+    "displayName": "client",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "code": {
+      "type": "string"
+    },
+    "dni": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "address": {
+      "type": "string"
+    },
+    "wifi_ssid": {
+      "type": "string"
+    },
+    "wifi_password": {
+      "type": "string"
+    },
+    "comment": {
+      "type": "text"
+    },
+    "newModel": {
+      "type": "integer"
+    },
+    "active": {
+      "type": "boolean",
+      "default": false
+    },
+    "phone": {
+      "type": "string"
+    },
+    "sendToMikrotik": {
+      "type": "boolean"
+    },
+    "operator_role": {
+      "type": "string"
+    },
+    "hasRepeater": {
+      "type": "boolean",
+      "default": false
+    },
+    "hasPendingRx": {
+      "type": "boolean",
+      "default": false
+    },
+    "nap_onu_address": {
+      "type": "string"
+    },
+    "opticalPower": {
+      "type": "string"
+    },
+    "activationrequest": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::activationrequest.activationrequest",
+      "mappedBy": "client"
+    },
+    "city": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::city.city",
+      "inversedBy": "clients"
+    },
+    "mac_addresses": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::device.device",
+      "mappedBy": "clients"
+    },
+    "naps": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::nap.nap",
+      "mappedBy": "clients"
+    },
+    "neighborhood": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::neighborhood.neighborhood",
+      "inversedBy": "clients"
+    },
+    "passwordchanges": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::passwordchange.passwordchange",
+      "mappedBy": "client"
+    },
+    "plan": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::plan.plan",
+      "inversedBy": "clients"
+    },
+    "technology": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::technology.technology",
+      "inversedBy": "clients"
+    },
+    "tickets": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::ticket.ticket",
+      "mappedBy": "client"
+    },
+    "operator": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
+    },
+    "histories": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::history.history",
+      "mappedBy": "client"
+    },
+    "clienttype": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::clienttype.clienttype",
+      "inversedBy": "clients"
+    },
+    "tvspecs": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::tvspec.tvspec",
+      "mappedBy": "client"
+    }
+  }
+}

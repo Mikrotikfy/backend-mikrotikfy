@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "technologies",
+  "info": {
+    "singularName": "technology",
+    "pluralName": "technologies",
+    "displayName": "technology"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "clients": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::client.client",
+      "mappedBy": "technology"
+    },
+    "naps": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::nap.nap",
+      "mappedBy": "technology"
+    }
+  }
+}

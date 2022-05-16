@@ -1,0 +1,24 @@
+{
+  "kind": "collectionType",
+  "collectionName": "materialhistorytypes",
+  "info": {
+    "singularName": "materialhistorytype",
+    "pluralName": "materialhistorytypes",
+    "displayName": "materialhistorytype"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "materialhistories": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::materialhistory.materialhistory",
+      "mappedBy": "materialhistorytype"
+    }
+  }
+}

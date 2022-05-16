@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "devicebrands",
+  "info": {
+    "singularName": "devicebrand",
+    "pluralName": "devicebrands",
+    "displayName": "devicebrand",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "devices": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::device.device",
+      "mappedBy": "devicebrand"
+    },
+    "devicebrandparts": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::devicebrandpart.devicebrandpart",
+      "mappedBy": "devicebrand"
+    }
+  }
+}

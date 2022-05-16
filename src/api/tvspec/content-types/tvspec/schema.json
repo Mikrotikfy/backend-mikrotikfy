@@ -1,0 +1,40 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tvspecs",
+  "info": {
+    "singularName": "tvspec",
+    "pluralName": "tvspecs",
+    "displayName": "tvspec",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "db": {
+      "type": "integer",
+      "default": 0
+    },
+    "high": {
+      "type": "integer",
+      "default": 0
+    },
+    "down": {
+      "type": "integer",
+      "default": 0
+    },
+    "tvspectype": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::tvspectype.tvspectype",
+      "inversedBy": "tvspecs"
+    },
+    "client": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::client.client",
+      "inversedBy": "tvspecs"
+    }
+  }
+}

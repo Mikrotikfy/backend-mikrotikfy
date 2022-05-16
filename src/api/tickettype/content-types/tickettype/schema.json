@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tickettypes",
+  "info": {
+    "singularName": "tickettype",
+    "pluralName": "tickettypes",
+    "displayName": "tickettype",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "tickets": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::ticket.ticket",
+      "mappedBy": "tickettype"
+    },
+    "clienttypes": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::clienttype.clienttype",
+      "inversedBy": "tickettypes"
+    }
+  }
+}

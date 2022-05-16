@@ -1,0 +1,37 @@
+{
+  "kind": "collectionType",
+  "collectionName": "passwordchanges",
+  "info": {
+    "singularName": "passwordchange",
+    "pluralName": "passwordchanges",
+    "displayName": "passwordchange",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "old_password": {
+      "type": "text"
+    },
+    "new_password": {
+      "type": "string"
+    },
+    "dni": {
+      "type": "string"
+    },
+    "address": {
+      "type": "string"
+    },
+    "client": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::client.client",
+      "inversedBy": "passwordchanges"
+    },
+    "active": {
+      "type": "boolean"
+    }
+  }
+}

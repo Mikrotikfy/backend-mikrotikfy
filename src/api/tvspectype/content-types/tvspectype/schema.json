@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tvspectypes",
+  "info": {
+    "singularName": "tvspectype",
+    "pluralName": "tvspectypes",
+    "displayName": "tvspectype",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "tvspecs": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::tvspec.tvspec",
+      "mappedBy": "tvspectype"
+    }
+  }
+}

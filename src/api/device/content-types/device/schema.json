@@ -1,0 +1,34 @@
+{
+  "kind": "collectionType",
+  "collectionName": "devices",
+  "info": {
+    "singularName": "device",
+    "pluralName": "devices",
+    "displayName": "device",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "mac_address": {
+      "type": "string"
+    },
+    "clients": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::client.client",
+      "inversedBy": "mac_addresses"
+    },
+    "devicebrand": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::devicebrand.devicebrand",
+      "inversedBy": "devices"
+    },
+    "details": {
+      "type": "string"
+    }
+  }
+}

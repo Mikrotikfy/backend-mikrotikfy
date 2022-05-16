@@ -1,0 +1,51 @@
+{
+  "kind": "collectionType",
+  "collectionName": "materialhistories",
+  "info": {
+    "singularName": "materialhistory",
+    "pluralName": "materialhistories",
+    "displayName": "materialhistory",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "quantity": {
+      "type": "integer"
+    },
+    "material": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::material.material",
+      "inversedBy": "materialhistories"
+    },
+    "materialhistorytype": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::materialhistorytype.materialhistorytype",
+      "inversedBy": "materialhistories"
+    },
+    "operator": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "materialhistories"
+    },
+    "technician": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "materialhistories"
+    },
+    "description": {
+      "type": "text"
+    },
+    "materialtype": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::materialtype.materialtype"
+    }
+  }
+}

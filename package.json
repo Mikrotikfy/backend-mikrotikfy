@@ -1,0 +1,32 @@
+{
+  "name": "strapi-4",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Backend for ARNOP project",
+  "scripts": {
+    "develop": "strapi develop",
+    "start": "strapi start",
+    "build": "strapi build",
+    "strapi": "strapi"
+  },
+  "dependencies": {
+    "@strapi/plugin-i18n": "4.1.11",
+    "@strapi/plugin-users-permissions": "4.1.11",
+    "@strapi/strapi": "4.1.11",
+    "mysql": "2.18.1",
+    "node-fetch": "2.6.1",
+    "node-routeros": "^1.6.9",
+    "strapi-plugin-transformer": "^2.0.1"
+  },
+  "author": {
+    "name": "Nicolas Echeverry"
+  },
+  "strapi": {
+    "uuid": "afcb7361-5668-4b9c-b99b-f1c1308e81cb"
+  },
+  "engines": {
+    "node": ">=12.x.x <=16.x.x",
+    "npm": ">=6.0.0"
+  },
+  "license": "MIT"
+}

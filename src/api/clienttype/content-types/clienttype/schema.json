@@ -1,0 +1,46 @@
+{
+  "kind": "collectionType",
+  "collectionName": "clienttypes",
+  "info": {
+    "singularName": "clienttype",
+    "pluralName": "clienttypes",
+    "displayName": "clienttype",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "clients": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::client.client",
+      "mappedBy": "clienttype"
+    },
+    "icon": {
+      "type": "string"
+    },
+    "tickets": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::ticket.ticket",
+      "mappedBy": "clienttype"
+    },
+    "users": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "plugin::users-permissions.user",
+      "mappedBy": "clienttypes"
+    },
+    "tickettypes": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::tickettype.tickettype",
+      "inversedBy": "clienttypes"
+    }
+  }
+}

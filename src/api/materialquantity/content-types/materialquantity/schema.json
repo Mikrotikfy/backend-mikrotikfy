@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "materialquantities",
+  "info": {
+    "singularName": "materialquantity",
+    "pluralName": "materialquantities",
+    "displayName": "materialquantity",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "quantity": {
+      "type": "integer"
+    },
+    "material": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::material.material",
+      "inversedBy": "materialquantities"
+    },
+    "materialtype": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::materialtype.materialtype",
+      "inversedBy": "materialquantities"
+    }
+  }
+}

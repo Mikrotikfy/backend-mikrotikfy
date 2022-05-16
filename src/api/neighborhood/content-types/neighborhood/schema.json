@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "neighborhoods",
+  "info": {
+    "singularName": "neighborhood",
+    "pluralName": "neighborhoods",
+    "displayName": "neighborhood"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "clients": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::client.client",
+      "mappedBy": "neighborhood"
+    },
+    "cities": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::city.city",
+      "inversedBy": "neighborhoods"
+    },
+    "naps": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::nap.nap",
+      "mappedBy": "neighborhood"
+    }
+  }
+}

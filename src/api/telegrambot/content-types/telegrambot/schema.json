@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "telegrambots",
+  "info": {
+    "singularName": "telegrambot",
+    "pluralName": "telegrambots",
+    "displayName": "telegrambot"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "token": {
+      "type": "string"
+    },
+    "chat": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "binnacle": {
+      "type": "string"
+    },
+    "log": {
+      "type": "string"
+    },
+    "city": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::city.city",
+      "inversedBy": "telegrambots"
+    }
+  }
+}
