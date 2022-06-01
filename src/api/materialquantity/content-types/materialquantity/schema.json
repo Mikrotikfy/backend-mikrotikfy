@@ -13,7 +13,9 @@
   "pluginOptions": {},
   "attributes": {
     "quantity": {
-      "type": "integer"
+      "type": "integer",
+      "default": 0,
+      "min": 0
     },
     "material": {
       "type": "relation",
