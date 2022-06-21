@@ -64,6 +64,12 @@
     },
     "escalatedoffice": {
       "type": "boolean"
+    },
+    "timeline": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::timeline.timeline",
+      "mappedBy": "ticket"
     }
   }
 }

@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "ticketdiagnostics",
+  "info": {
+    "singularName": "ticketdiagnostic",
+    "pluralName": "ticketdiagnostics",
+    "displayName": "ticketdiagnostic",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "diagnosticdetails": {
+      "type": "text"
+    },
+    "diagnostictype": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::diagnostictype.diagnostictype",
+      "inversedBy": "ticketdiagnostics"
+    },
+    "timeline": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::timeline.timeline",
+      "inversedBy": "ticketdiagnostic"
+    }
+  }
+}

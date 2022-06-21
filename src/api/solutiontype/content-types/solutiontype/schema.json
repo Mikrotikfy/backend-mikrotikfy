@@ -1,0 +1,24 @@
+{
+  "kind": "collectionType",
+  "collectionName": "solutiontypes",
+  "info": {
+    "singularName": "solutiontype",
+    "pluralName": "solutiontypes",
+    "displayName": "solutiontype"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "ticketsolutions": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::ticketsolution.ticketsolution",
+      "mappedBy": "solutiontype"
+    }
+  }
+}

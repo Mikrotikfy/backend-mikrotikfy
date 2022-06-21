@@ -139,6 +139,12 @@
       "relation": "oneToMany",
       "target": "api::tvspec.tvspec",
       "mappedBy": "client"
+    },
+    "timelines": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::timeline.timeline",
+      "mappedBy": "client"
     }
   }
 }

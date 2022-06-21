@@ -104,6 +104,12 @@
       "relation": "manyToMany",
       "target": "api::menu.menu",
       "mappedBy": "users"
+    },
+    "timelines": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::timeline.timeline",
+      "mappedBy": "technician"
     }
   }
 }

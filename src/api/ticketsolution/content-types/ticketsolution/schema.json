@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "ticketsolutions",
+  "info": {
+    "singularName": "ticketsolution",
+    "pluralName": "ticketsolutions",
+    "displayName": "ticketsolution",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "solutiondetails": {
+      "type": "text"
+    },
+    "solutiontype": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::solutiontype.solutiontype",
+      "inversedBy": "ticketsolutions"
+    },
+    "timeline": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::timeline.timeline",
+      "inversedBy": "ticketsolution"
+    }
+  }
+}
