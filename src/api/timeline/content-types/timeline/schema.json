@@ -52,6 +52,12 @@
       "relation": "oneToOne",
       "target": "api::ticketsolution.ticketsolution",
       "inversedBy": "timeline"
+    },
+    "city": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::city.city",
+      "inversedBy": "timelines"
     }
   }
 }

@@ -25,7 +25,7 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::timeline.timeline",
-      "inversedBy": "ticketdiagnostic"
+      "mappedBy": "ticketdiagnostic"
     }
   }
 }

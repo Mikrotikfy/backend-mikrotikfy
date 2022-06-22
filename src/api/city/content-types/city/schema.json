@@ -86,6 +86,12 @@
       "relation": "oneToOne",
       "target": "api::material.material",
       "mappedBy": "city"
+    },
+    "timelines": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::timeline.timeline",
+      "mappedBy": "city"
     }
   }
 }
