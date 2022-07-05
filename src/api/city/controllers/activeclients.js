@@ -40,6 +40,5 @@ module.exports = {
       conn.close()
       return result2
     }
-
   },
 };

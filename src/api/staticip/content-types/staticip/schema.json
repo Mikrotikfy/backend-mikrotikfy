@@ -1,0 +1,42 @@
+{
+  "kind": "collectionType",
+  "collectionName": "staticips",
+  "info": {
+    "singularName": "staticip",
+    "pluralName": "staticips",
+    "displayName": "staticip"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "cidr": {
+      "type": "string"
+    },
+    "network": {
+      "type": "string"
+    },
+    "host": {
+      "type": "string"
+    },
+    "broadcast": {
+      "type": "string"
+    },
+    "gateaway": {
+      "type": "string"
+    },
+    "client": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::client.client",
+      "inversedBy": "staticip"
+    },
+    "device": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::device.device",
+      "inversedBy": "staticip"
+    }
+  }
+}

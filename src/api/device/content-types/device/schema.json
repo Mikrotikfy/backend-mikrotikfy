@@ -29,6 +29,12 @@
     },
     "details": {
       "type": "string"
+    },
+    "staticip": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::staticip.staticip",
+      "inversedBy": "device"
     }
   }
 }
