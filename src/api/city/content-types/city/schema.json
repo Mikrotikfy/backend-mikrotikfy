@@ -86,6 +86,12 @@
       "relation": "oneToOne",
       "target": "api::material.material",
       "mappedBy": "city"
+    },
+    "staticips": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::staticip.staticip",
+      "mappedBy": "city"
     }
   }
 }

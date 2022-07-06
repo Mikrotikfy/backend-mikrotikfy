@@ -148,7 +148,7 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::staticip.staticip",
-      "inversedBy": "client"
+      "mappedBy": "client"
     }
   }
 }

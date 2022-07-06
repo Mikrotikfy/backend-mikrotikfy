@@ -34,7 +34,7 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::staticip.staticip",
-      "inversedBy": "device"
+      "mappedBy": "device"
     }
   }
 }

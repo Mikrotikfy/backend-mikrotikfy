@@ -4,7 +4,8 @@
   "info": {
     "singularName": "staticip",
     "pluralName": "staticips",
-    "displayName": "staticip"
+    "displayName": "staticip",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -37,6 +38,12 @@
       "relation": "oneToOne",
       "target": "api::device.device",
       "inversedBy": "staticip"
+    },
+    "city": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::city.city",
+      "inversedBy": "staticips"
     }
   }
 }
