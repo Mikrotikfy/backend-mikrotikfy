@@ -24,7 +24,7 @@
     "broadcast": {
       "type": "string"
     },
-    "gateaway": {
+    "gateway": {
       "type": "string"
     },
     "client": {
@@ -43,6 +43,15 @@
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::city.city",
+      "inversedBy": "staticips"
+    },
+    "mask": {
+      "type": "string"
+    },
+    "technician": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
       "inversedBy": "staticips"
     }
   }

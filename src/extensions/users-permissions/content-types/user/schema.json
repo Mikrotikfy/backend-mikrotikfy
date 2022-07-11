@@ -104,6 +104,12 @@
       "relation": "manyToMany",
       "target": "api::menu.menu",
       "mappedBy": "users"
+    },
+    "staticips": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::staticip.staticip",
+      "mappedBy": "technician"
     }
   }
 }
