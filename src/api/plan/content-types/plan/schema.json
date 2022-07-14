@@ -4,7 +4,8 @@
   "info": {
     "singularName": "plan",
     "pluralName": "plans",
-    "displayName": "plan"
+    "displayName": "plan",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -22,6 +23,9 @@
       "relation": "oneToMany",
       "target": "api::client.client",
       "mappedBy": "plan"
+    },
+    "mikrotik_bandwidth": {
+      "type": "string"
     }
   }
 }
