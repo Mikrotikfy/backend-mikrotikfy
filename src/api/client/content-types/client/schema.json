@@ -139,6 +139,22 @@
       "relation": "oneToMany",
       "target": "api::tvspec.tvspec",
       "mappedBy": "client"
+    },
+    "ipmodel": {
+      "type": "integer",
+      "default": 0
+    },
+    "staticip": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::staticip.staticip",
+      "mappedBy": "client"
+    },
+    "vlan": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::vlan.vlan",
+      "inversedBy": "clients"
     }
   }
 }

@@ -71,7 +71,7 @@ module.exports = {
                 }
               ],  
             },
-            populate: ['city', 'plan', 'neighborhood', 'technology', 'clienttype'],
+            populate: ['city', 'plan', 'neighborhood', 'technology', 'clienttype', 'vlan'],
             orderBy: { code: 'asc' }
           })
           const sanitizedEntity = await sanitize.contentAPI.output(res);

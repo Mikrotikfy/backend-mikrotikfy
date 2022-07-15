@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "plans",
+  "collectionName": "vlans",
   "info": {
-    "singularName": "plan",
-    "pluralName": "plans",
-    "displayName": "plan",
+    "singularName": "vlan",
+    "pluralName": "vlans",
+    "displayName": "vlan",
     "description": ""
   },
   "options": {
@@ -15,17 +15,21 @@
     "name": {
       "type": "string"
     },
-    "mikrotik_name": {
-      "type": "string"
+    "vlan": {
+      "type": "integer",
+      "default": 1
     },
     "clients": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::client.client",
-      "mappedBy": "plan"
+      "mappedBy": "vlan"
     },
-    "mikrotik_bandwidth": {
-      "type": "string"
+    "city": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::city.city",
+      "inversedBy": "vlans"
     }
   }
 }
