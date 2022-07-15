@@ -92,6 +92,12 @@
       "relation": "oneToMany",
       "target": "api::staticip.staticip",
       "mappedBy": "city"
+    },
+    "vlans": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::vlan.vlan",
+      "mappedBy": "city"
     }
   }
 }

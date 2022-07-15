@@ -149,6 +149,12 @@
       "relation": "oneToOne",
       "target": "api::staticip.staticip",
       "mappedBy": "client"
+    },
+    "vlan": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::vlan.vlan",
+      "inversedBy": "clients"
     }
   }
 }

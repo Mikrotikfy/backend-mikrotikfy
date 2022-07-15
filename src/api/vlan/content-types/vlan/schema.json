@@ -1,0 +1,35 @@
+{
+  "kind": "collectionType",
+  "collectionName": "vlans",
+  "info": {
+    "singularName": "vlan",
+    "pluralName": "vlans",
+    "displayName": "vlan",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "vlan": {
+      "type": "integer",
+      "default": 1
+    },
+    "clients": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::client.client",
+      "mappedBy": "vlan"
+    },
+    "city": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::city.city",
+      "inversedBy": "vlans"
+    }
+  }
+}

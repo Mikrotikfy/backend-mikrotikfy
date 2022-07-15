@@ -11,14 +11,13 @@ module.exports = {
     const mikrotiks = cityQuery.mikrotiks
     if (mikrotiks.length > 1) { // Si hay dos mikrotiks o mas
       for(let i = 0; i < mikrotiks.length; i++) {
-        console.log(mikrotiks[i].ip)
         const mikrotik = mikrotiks[i]
         createAddressList({ mikrotik, ipmodel })
       }
     } else { // Si solo hay una mikrotik
-
+      const mikrotik = mikrotiks[0]
+      createAddressList({ mikrotik, ipmodel })
     }
-    console.log(ipmodel)
     return ipmodel
   }
 };
