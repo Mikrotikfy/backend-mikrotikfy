@@ -31,6 +31,12 @@
       "relation": "oneToMany",
       "target": "api::nap.nap",
       "mappedBy": "neighborhood"
+    },
+    "addresses": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::address.address",
+      "mappedBy": "neighborhood"
     }
   }
 }
