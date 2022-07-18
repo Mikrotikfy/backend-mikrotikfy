@@ -155,6 +155,12 @@
       "relation": "manyToOne",
       "target": "api::vlan.vlan",
       "inversedBy": "clients"
+    },
+    "addresses": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::address.address",
+      "mappedBy": "client"
     }
   }
 }

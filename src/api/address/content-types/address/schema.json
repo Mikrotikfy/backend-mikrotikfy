@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "addresses",
+  "info": {
+    "singularName": "address",
+    "pluralName": "addresses",
+    "displayName": "address"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "address": {
+      "type": "string"
+    },
+    "neighborhood": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::neighborhood.neighborhood",
+      "inversedBy": "addresses"
+    },
+    "client": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::client.client",
+      "inversedBy": "addresses"
+    }
+  }
+}
