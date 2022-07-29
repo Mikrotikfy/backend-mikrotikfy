@@ -71,7 +71,7 @@ module.exports = {
                 }
               ],  
             },
-            populate: ['city', 'plan', 'addresses', 'addresses.neighborhood', 'neighborhood', 'technology', 'clienttype', 'vlan'],
+            populate: ['city', 'plan', 'addresses', 'addresses.neighborhood', 'neighborhood', 'technology', 'clienttype', 'vlan', 'offer', 'offer.debtmovements', 'offer.offermovements', 'offer.plan' ],
             orderBy: { code: 'asc' }
           })
           const sanitizedEntity = await sanitize.contentAPI.output(res);

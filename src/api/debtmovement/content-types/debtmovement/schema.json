@@ -27,6 +27,16 @@
     "isindebt": {
       "type": "boolean",
       "default": false
+    },
+    "isretired": {
+      "type": "boolean",
+      "default": false
+    },
+    "technician": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "debtmovements"
     }
   }
 }
