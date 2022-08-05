@@ -1,0 +1,53 @@
+{
+  "kind": "collectionType",
+  "collectionName": "offers",
+  "info": {
+    "singularName": "offer",
+    "pluralName": "offers",
+    "displayName": "offer",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "price": {
+      "type": "integer"
+    },
+    "currency": {
+      "type": "string",
+      "default": "COP"
+    },
+    "clients": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::client.client",
+      "mappedBy": "offer"
+    },
+    "plan": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::plan.plan",
+      "inversedBy": "offers"
+    },
+    "affiliation_price": {
+      "type": "integer"
+    },
+    "debtmovements": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::debtmovement.debtmovement",
+      "mappedBy": "offer"
+    },
+    "offermovements": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::offermovement.offermovement",
+      "mappedBy": "offer"
+    }
+  }
+}

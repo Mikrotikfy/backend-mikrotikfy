@@ -26,6 +26,12 @@
     },
     "mikrotik_bandwidth": {
       "type": "string"
+    },
+    "offers": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::offer.offer",
+      "mappedBy": "plan"
     }
   }
 }

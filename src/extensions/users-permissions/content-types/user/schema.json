@@ -110,6 +110,18 @@
       "relation": "oneToMany",
       "target": "api::staticip.staticip",
       "mappedBy": "technician"
+    },
+    "debtmovements": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::debtmovement.debtmovement",
+      "mappedBy": "technician"
+    },
+    "offermovements": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::offermovement.offermovement",
+      "mappedBy": "technician"
     }
   }
 }

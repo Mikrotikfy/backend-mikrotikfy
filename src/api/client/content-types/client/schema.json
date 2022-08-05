@@ -161,6 +161,24 @@
       "relation": "oneToMany",
       "target": "api::address.address",
       "mappedBy": "client"
+    },
+    "offer": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::offer.offer",
+      "inversedBy": "clients"
+    },
+    "debtmovements": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::debtmovement.debtmovement",
+      "mappedBy": "client"
+    },
+    "offermovements": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::offermovement.offermovement",
+      "mappedBy": "client"
     }
   }
 }
