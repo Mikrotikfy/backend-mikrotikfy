@@ -6,11 +6,11 @@
 const { mkSetClientPlanInformation } = require('../../../mikrotik/mkSetClientPlanInformation')
 module.exports = {
   async editclientplan(ctx) {
-    const {id, plan} = ctx.request.body.data
+    const {id, plan, kick} = ctx.request.body.data
     const searchPlan = await strapi.service('api::plan.plan').findOne(plan)
     const newClientPlan = searchPlan.mikrotik_name
     const clientObj = await strapi.service('api::client.client').findOne(id, {populate: ['city', 'city.mikrotiks']})
-    const removeActive = true
+    const removeActive = kick
     const successfulMikrotikResponses = []
     await strapi.service('api::client.client').update(id, { data: { plan }})
     // await strapi.services.history.create(clientObj);
