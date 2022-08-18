@@ -12,7 +12,7 @@ module.exports = {
     const clientObj = await strapi.service('api::client.client').findOne(id, {populate: ['city', 'city.mikrotiks']})
     const removeActive = kick
     const successfulMikrotikResponses = []
-    await strapi.service('api::client.client').update(id, { data: { plan }})
+    // await strapi.service('api::client.client').update(id, { data: { plan }})
     // await strapi.services.history.create(clientObj);
     if (clientObj.city.mikrotiks.length > 1) {
       //for loop
