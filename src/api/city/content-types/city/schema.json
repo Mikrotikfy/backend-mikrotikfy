@@ -98,6 +98,18 @@
       "relation": "oneToMany",
       "target": "api::vlan.vlan",
       "mappedBy": "city"
+    },
+    "billingperiods": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::billingperiod.billingperiod",
+      "mappedBy": "city"
+    },
+    "debtmovements": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::debtmovement.debtmovement",
+      "mappedBy": "city"
     }
   }
 }

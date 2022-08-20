@@ -40,6 +40,12 @@
     },
     "comment": {
       "type": "string"
+    },
+    "city": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::city.city",
+      "inversedBy": "debtmovements"
     }
   }
 }
