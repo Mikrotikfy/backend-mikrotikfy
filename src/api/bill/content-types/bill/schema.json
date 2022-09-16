@@ -1,0 +1,40 @@
+{
+  "kind": "collectionType",
+  "collectionName": "bills",
+  "info": {
+    "singularName": "bill",
+    "pluralName": "bills",
+    "displayName": "bill",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "active": {
+      "type": "boolean"
+    },
+    "payed": {
+      "type": "boolean"
+    },
+    "details": {
+      "type": "string"
+    },
+    "billtype": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::billtype.billtype",
+      "inversedBy": "bills"
+    },
+    "deposits": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::deposit.deposit",
+      "mappedBy": "bill"
+    },
+    "billingmonth": {
+      "type": "integer"
+    }
+  }
+}

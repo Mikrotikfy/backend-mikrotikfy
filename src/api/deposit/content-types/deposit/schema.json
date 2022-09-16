@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "deposits",
+  "info": {
+    "singularName": "deposit",
+    "pluralName": "deposits",
+    "displayName": "deposit"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "amount": {
+      "type": "integer"
+    },
+    "details": {
+      "type": "string"
+    },
+    "bill": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::bill.bill",
+      "inversedBy": "deposits"
+    }
+  }
+}

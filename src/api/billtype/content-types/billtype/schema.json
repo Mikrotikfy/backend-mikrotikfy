@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "billtypes",
+  "info": {
+    "singularName": "billtype",
+    "pluralName": "billtypes",
+    "displayName": "billtype",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "price": {
+      "type": "integer"
+    },
+    "bills": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::bill.bill",
+      "mappedBy": "billtype"
+    }
+  }
+}
