@@ -9,7 +9,8 @@ module.exports.mkCreateClient = async function (
     password: process.env.MIKROTIK_API_SECRET,
     port: 8087,
   });
-  const comment = `${client.code} ${client.technology.name} ${client.neighborhood.name} ${client.address} ${client.name} ${client.dni} ${client.city.name} ${client.plan.name} NAP-ONU: ${client.nap_onu_address} POTENCIA: ${client.opticalPower} ${client.wifi_ssid} ${client.wifi_password}`;
+  const mkPlan = client.plan ? client.plan.mikrotik_name : client.offer.plan.mikrotik_name
+  const comment = `${client.code} ${client.technology.name} ${client.neighborhood.name} ${client.address} ${client.name} ${client.dni} ${client.city.name} ${client.plan ? client.plan.name : client.offer.plan.name} NAP-ONU: ${client.nap_onu_address} POTENCIA: ${client.opticalPower} ${client.wifi_ssid} ${client.wifi_password}`;
   await conn
     .connect()
     .then(() => {})
@@ -18,7 +19,7 @@ module.exports.mkCreateClient = async function (
         .write("/ppp/secret/add", [
           "=name=" + client.code,
           "=password=MAR" + client.code,
-          "=profile=" + client.plan.mikrotik_name,
+          "=profile=" + mkPlan,
           "=service=pppoe",
           "=comment=" + comment,
         ])

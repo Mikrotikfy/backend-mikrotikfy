@@ -179,6 +179,19 @@
       "relation": "oneToMany",
       "target": "api::offermovement.offermovement",
       "mappedBy": "client"
+    },
+    "bills": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::bill.bill",
+      "mappedBy": "client"
+    },
+    "email": {
+      "type": "string"
+    },
+    "electronicbill": {
+      "type": "boolean",
+      "default": true
     }
   }
 }
