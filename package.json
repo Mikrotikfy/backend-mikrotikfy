@@ -10,13 +10,13 @@
     "strapi": "strapi"
   },
   "dependencies": {
-    "@strapi/plugin-i18n": "4.3.3",
-    "@strapi/plugin-users-permissions": "4.3.3",
-    "@strapi/strapi": "4.3.3",
+    "@strapi/plugin-i18n": "4.4.3",
+    "@strapi/plugin-users-permissions": "4.4.3",
+    "@strapi/strapi": "4.4.3",
     "mysql": "2.18.1",
     "node-fetch": "2.6.1",
     "node-routeros": "^1.6.9",
-    "strapi-plugin-transformer": "^2.0.2"
+    "strapi-plugin-transformer": "^2.1.0"
   },
   "author": {
     "name": "Nicolas Echeverry"
