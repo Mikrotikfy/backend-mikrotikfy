@@ -5,5 +5,10 @@ module.exports = {
       path: '/webhook',
       handler: 'webhook.subscribe',
     },
+    {
+      method: 'POST',
+      path: '/webhook',
+      handler: 'webhook.notification',
+    },
   ],
 };
