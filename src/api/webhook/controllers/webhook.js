@@ -34,6 +34,17 @@ module.exports = {
         data.entry[0].changes[0].value.messages &&
         data.entry[0].changes[0].value.messages[0]
       ) {
+        const contact = await strapi.service('api::whatsapp.whatsapp').find({ phone: data.entry[0].changes[0].value.messages[0].from })
+        console.log(contact)
+        if (contact.results.length < 1) {
+          const newContact = await strapi.service('api::whatsappcontact.whatsappcontact').create({
+            data: {
+              phone: data.entry[0].changes[0].value.messages[0].from,
+              name: data.entry[0].changes[0].value.contacts[0].profile.name,
+            }
+          })
+          console.log(newContact)
+        }
         const res = await strapi.service('api::whatsapp.whatsapp').create({
           data: {
             phone: data.entry[0].changes[0].value.messages[0].from,

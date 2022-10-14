@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "whatsappcontacts",
+  "info": {
+    "singularName": "whatsappcontact",
+    "pluralName": "whatsappcontacts",
+    "displayName": "whatsappcontact"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "phone": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    }
+  }
+}
