@@ -35,15 +35,13 @@ module.exports = {
         data.entry[0].changes[0].value.messages[0]
       ) {
         const contact = await strapi.service('api::whatsapp.whatsapp').find({ phone: data.entry[0].changes[0].value.messages[0].from })
-        console.log(contact)
         if (contact.results.length < 1) {
-          const newContact = await strapi.service('api::whatsappcontact.whatsappcontact').create({
+          await strapi.service('api::whatsappcontact.whatsappcontact').create({
             data: {
               phone: data.entry[0].changes[0].value.messages[0].from,
               name: sanitizeString(data.entry[0].changes[0].value.contacts[0].profile.name),
             }
           })
-          console.log(newContact)
         }
         const res = await strapi.service('api::whatsapp.whatsapp').create({
           data: {
@@ -79,5 +77,6 @@ module.exports = {
 function sanitizeString(str) {
   const res1 = str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
   const res2 = res1.replace(/[^a-z0-9áéíóúñü \.\n@ñ,_-]/gim, "");
-  return res2;
+  const res3 = res2.replace(/([\u2700-\u27BF]|[\uE000-\uF8FF]|\uD83C[\uDC00-\uDFFF]|\uD83D[\uDC00-\uDFFF]|[\u2011-\u26FF]|\uD83E[\uDD10-\uDDFF])/g, '');
+  return res2.trim();
 }
