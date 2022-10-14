@@ -34,34 +34,29 @@ module.exports = {
         data.entry[0].changes[0].value.messages &&
         data.entry[0].changes[0].value.messages[0]
       ) {
-        if (data.entry[0].changes[0].value.messages[0].type === 'text') {
-          const res = await strapi.service('api::whatsapp.whatsapp').create({
+        const res = await strapi.service('api::whatsapp.whatsapp').create({
+          data: {
+            phone: data.entry[0].changes[0].value.messages[0].from,
+            payload: data
+          }
+        })
+        strapi.log.debug(`Service says: ${JSON.stringify(res)}`)
+        const phone_number_id = data.entry[0].changes[0].value.metadata.phone_number_id
+        const from = data.entry[0].changes[0].value.messages[0].from
+        fetch(`https://graph.facebook.com/v15.0/${phone_number_id}/messages?access_token=${TOKEN}`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
             data: {
-              phone: data.entry[0].changes[0].value.messages[0].from,
-              payload: data
+              messaging_product: 'whatsapp',
+              to: from,
+              status: 'delivered',
             }
           })
-          strapi.log.debug(`Service says: ${JSON.stringify(res)}`)
-          const phone_number_id = data.entry[0].changes[0].value.metadata.phone_number_id
-          const from = data.entry[0].changes[0].value.messages[0].from
-          const msg_body = data.entry[0].changes[0].value.messages[0].text.body
-          fetch(`https://graph.facebook.com/v15.0/${phone_number_id}/messages?access_token=${TOKEN}`, {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-              data: {
-                messaging_product: 'whatsapp',
-                to: from,
-                text: {
-                  body: `Akc: ${msg_body}`
-                }
-              }
-            })
-          })
-          return 200
-        }
+        })
+        return 200
       } else {
         return 403
       }
