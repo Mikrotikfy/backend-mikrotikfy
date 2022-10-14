@@ -41,12 +41,10 @@ module.exports = {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          data: {
-            messaging_product: 'whatsapp',
-            to: from,
-            text: {
-              body: `Akc: ${msg_body}`
-            }
+          messaging_product: 'whatsapp',
+          to: from,
+          text: {
+            body: `Akc: ${msg_body}`
           }
         })
       })
