@@ -40,7 +40,7 @@ module.exports = {
           const newContact = await strapi.service('api::whatsappcontact.whatsappcontact').create({
             data: {
               phone: data.entry[0].changes[0].value.messages[0].from,
-              name: data.entry[0].changes[0].value.contacts[0].profile.name,
+              name: sanitizeString(data.entry[0].changes[0].value.contacts[0].profile.name),
             }
           })
           console.log(newContact)
@@ -76,3 +76,8 @@ module.exports = {
     }
   }
 };
+function sanitizeString(str) {
+  const res1 = str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+  const res2 = res1.replace(/[^a-z0-9áéíóúñü \.\n@ñ,_-]/gim, "");
+  return res2;
+}
