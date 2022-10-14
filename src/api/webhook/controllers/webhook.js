@@ -21,7 +21,7 @@ module.exports = {
       }
     }
   },
-  notification (ctx) {
+  async notification (ctx) {
     const TOKEN = process.env.TOKEN
 
     const data = ctx.request.body
@@ -34,26 +34,34 @@ module.exports = {
         data.entry[0].changes[0].value.messages &&
         data.entry[0].changes[0].value.messages[0]
       ) {
-        const phone_number_id = data.entry[0].changes[0].value.metadata.phone_number_id
-        const from = data.entry[0].changes[0].value.messages[0].from
-        const msg_body = data.entry[0].changes[0].value.messages[0].text.body
-        strapi.log.debug(`User ${from} - ${phone_number_id} send message: ${msg_body}`)
-        fetch(`https://graph.facebook.com/v14.0/${phone_number_id}/messages?access_token=${TOKEN}`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
+        if (data.entry[0].changes[0].value.messages[0].type === 'text') {
+          const res = await strapi.service('api::whatsapp.whatsapp').create({
             data: {
-              messaging_product: 'whatsapp',
-              to: from,
-              text: {
-                body: `Akc: ${msg_body}`
-              }
+              phone: data.entry[0].changes[0].value.messages[0].from,
+              payload: data
             }
           })
-        })
-        return 200
+          strapi.log.debug(`Service says: ${JSON.stringify(res)}`)
+          const phone_number_id = data.entry[0].changes[0].value.metadata.phone_number_id
+          const from = data.entry[0].changes[0].value.messages[0].from
+          const msg_body = data.entry[0].changes[0].value.messages[0].text.body
+          fetch(`https://graph.facebook.com/v15.0/${phone_number_id}/messages?access_token=${TOKEN}`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              data: {
+                messaging_product: 'whatsapp',
+                to: from,
+                text: {
+                  body: `Akc: ${msg_body}`
+                }
+              }
+            })
+          })
+          return 200
+        }
       } else {
         return 403
       }
