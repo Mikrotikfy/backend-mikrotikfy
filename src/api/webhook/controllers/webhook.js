@@ -78,5 +78,6 @@ function sanitizeString(str) {
   const res1 = str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
   const res2 = res1.replace(/[^a-z0-9áéíóúñü \.\n@ñ,_-]/gim, "");
   const res3 = res2.replace(/([\u2700-\u27BF]|[\uE000-\uF8FF]|\uD83C[\uDC00-\uDFFF]|\uD83D[\uDC00-\uDFFF]|[\u2011-\u26FF]|\uD83E[\uDD10-\uDDFF])/g, '');
-  return res2.trim();
+  const res4 = res3.replace(/([\uE000-\uF8FF]|\uD83C[\uDF00-\uDFFF]|\uD83D[\uDC00-\uDDFF])/g, '')
+  return res4.trim();
 }
