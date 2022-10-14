@@ -25,7 +25,7 @@ module.exports = {
     const TOKEN = process.env.TOKEN
 
     const data = ctx.request.body
-    strapi.log.debug(data)
+    strapi.log.debug(JSON.stringify(data))
     if (data.object) {
       if (
         data.entry &&
