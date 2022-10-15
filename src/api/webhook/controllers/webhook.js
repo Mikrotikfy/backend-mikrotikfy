@@ -25,7 +25,6 @@ module.exports = {
     const TOKEN = process.env.TOKEN
 
     const data = ctx.request.body
-    strapi.log.debug(JSON.stringify(data))
     if (data.object) {
       if (
         data.entry &&
@@ -34,7 +33,12 @@ module.exports = {
         data.entry[0].changes[0].value.messages &&
         data.entry[0].changes[0].value.messages[0]
       ) {
-        const contact = await strapi.service('api::whatsapp.whatsapp').find({ phone: data.entry[0].changes[0].value.messages[0].from })
+        const contact = await strapi.service('api::whatsapp.whatsapp').find({
+          filters: {
+            phone: data.entry[0].changes[0].value.messages[0].from
+          }
+        })
+        // strapi.log.debug(`Service says: ${JSON.stringify(contact.results)}`)
         if (contact.results.length < 1) {
           await strapi.service('api::whatsappcontact.whatsappcontact').create({
             data: {
@@ -43,13 +47,12 @@ module.exports = {
             }
           })
         }
-        const res = await strapi.service('api::whatsapp.whatsapp').create({
+        await strapi.service('api::whatsapp.whatsapp').create({
           data: {
             phone: data.entry[0].changes[0].value.messages[0].from,
             payload: data
           }
         })
-        strapi.log.debug(`Service says: ${JSON.stringify(res)}`)
         const phone_number_id = data.entry[0].changes[0].value.metadata.phone_number_id
         const from = data.entry[0].changes[0].value.messages[0].from
         fetch(`https://graph.facebook.com/v15.0/${phone_number_id}/messages?access_token=${TOKEN}`, {
