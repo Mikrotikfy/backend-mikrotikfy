@@ -4,7 +4,8 @@
   "info": {
     "singularName": "whatsapp",
     "pluralName": "whatsapps",
-    "displayName": "whatsapp"
+    "displayName": "whatsapp",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -16,6 +17,9 @@
     },
     "payload": {
       "type": "json"
+    },
+    "to": {
+      "type": "string"
     }
   }
 }
