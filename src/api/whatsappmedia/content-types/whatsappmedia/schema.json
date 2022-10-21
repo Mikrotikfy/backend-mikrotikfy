@@ -1,0 +1,22 @@
+{
+  "kind": "collectionType",
+  "collectionName": "whatsappmedias",
+  "info": {
+    "singularName": "whatsappmedia",
+    "pluralName": "whatsappmedias",
+    "displayName": "whatsappmedia",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "mediaid": {
+      "type": "string"
+    },
+    "url": {
+      "type": "string"
+    }
+  }
+}
