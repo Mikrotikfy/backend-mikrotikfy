@@ -186,6 +186,12 @@
     "electronicbill": {
       "type": "boolean",
       "default": true
+    },
+    "monthlybills": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::monthlybill.monthlybill",
+      "mappedBy": "client"
     }
   }
 }
