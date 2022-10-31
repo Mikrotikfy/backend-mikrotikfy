@@ -33,13 +33,18 @@ module.exports = {
         data.entry[0].changes[0].value.messages &&
         data.entry[0].changes[0].value.messages[0]
       ) {
-        const contact = await strapi.service('api::whatsapp.whatsapp').find({
+        const messages = await strapi.service('api::whatsapp.whatsapp').find({
+          filters: {
+            phone: data.entry[0].changes[0].value.messages[0].from
+          }
+        })
+        const contact = await strapi.service('api::whatsappcontact.whatsappcontact').find({
           filters: {
             phone: data.entry[0].changes[0].value.messages[0].from
           }
         })
         // strapi.log.debug(`Service says: ${JSON.stringify(contact.results)}`)
-        if (contact.results.length < 1) {
+        if (messages.results.length < 1) {
           await strapi.service('api::whatsappcontact.whatsappcontact').create({
             data: {
               phone: data.entry[0].changes[0].value.messages[0].from,
@@ -47,12 +52,19 @@ module.exports = {
             }
           })
         }
+        
         await strapi.service('api::whatsapp.whatsapp').create({
           data: {
             phone: data.entry[0].changes[0].value.messages[0].from,
             payload: data
           }
         })
+        const res = await strapi.service('api::whatsappcontact.whatsappcontact').update(contact.results[0].id, {
+          data: {
+            'lastMessageOn': ""+Date.now()
+          }
+        })
+        console.log(res)
         const phone_number_id = data.entry[0].changes[0].value.metadata.phone_number_id
         const from = data.entry[0].changes[0].value.messages[0].from
         fetch(`https://graph.facebook.com/v15.0/${phone_number_id}/messages?access_token=${TOKEN}`, {

@@ -16,19 +16,23 @@ module.exports = {
         })
           .then(response => response.json())
           .then(async (data) => {
-            const binaryImg = await fetch(`${data.url}`, {
+            if (data.error) {
+              return {
+                status: 403
+              }
+            }
+            const binaryMedia = await fetch(`${data.url}`, {
               method: 'GET',
               headers: {
                 Authorization: `Bearer ${process.env.META_TOKEN}`
               }
             })
-              .then(async (imageData) => {
-                const binary = Buffer.from(await imageData.arrayBuffer())
+              .then(async (mediaData) => {
+                const binary = Buffer.from(await mediaData.arrayBuffer())
                 return binary
               })
-            return binaryImg
+            return binaryMedia
           })
-    console.log(res)
     return res
   }
 };
