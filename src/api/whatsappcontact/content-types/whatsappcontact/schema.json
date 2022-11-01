@@ -20,6 +20,15 @@
     },
     "lastMessageOn": {
       "type": "string"
+    },
+    "lastwhatsapp": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::whatsapp.whatsapp"
+    },
+    "read": {
+      "type": "boolean",
+      "default": false
     }
   }
 }
