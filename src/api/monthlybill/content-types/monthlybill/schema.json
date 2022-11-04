@@ -29,6 +29,9 @@
     },
     "success": {
       "type": "boolean"
+    },
+    "type": {
+      "type": "string"
     }
   }
 }
