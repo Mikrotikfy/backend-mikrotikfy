@@ -192,6 +192,9 @@
       "relation": "oneToMany",
       "target": "api::monthlybill.monthlybill",
       "mappedBy": "client"
+    },
+    "monthlybill": {
+      "type": "string"
     }
   }
 }
