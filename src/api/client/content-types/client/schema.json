@@ -195,6 +195,11 @@
     },
     "monthlybill": {
       "type": "string"
+    },
+    "sendmonthlybill": {
+      "type": "boolean",
+      "default": false,
+      "required": false
     }
   }
 }
