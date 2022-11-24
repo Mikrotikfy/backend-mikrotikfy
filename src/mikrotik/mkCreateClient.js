@@ -10,7 +10,7 @@ module.exports.mkCreateClient = async function (
     port: 8087,
   });
   const mkPlan = client.plan ? client.plan.mikrotik_name : client.offer.plan.mikrotik_name
-  const comment = `${client.code} ${client.technology.name} ${client.neighborhood.name} ${client.address} ${client.name} ${client.dni} ${client.city.name} ${client.plan ? client.plan.name : client.offer.plan.name} NAP-ONU: ${client.nap_onu_address} POTENCIA: ${client.opticalPower} ${client.wifi_ssid} ${client.wifi_password}`;
+  const comment = `${client.code} NO DEF. ${client.neighborhood.name} ${client.address} ${client.name} ${client.dni} ${client.city.name} ${client.plan ? client.plan.name : client.offer.plan.name} NAP-ONU: ${client.nap_onu_address} POTENCIA: ${client.opticalPower} ${client.wifi_ssid} ${client.wifi_password}`;
   await conn
     .connect()
     .then(() => {})
