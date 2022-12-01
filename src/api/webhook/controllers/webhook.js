@@ -61,7 +61,7 @@ module.exports = {
         await strapi.service('api::whatsappcontact.whatsappcontact').update(contact.results[0].id, {
           data: {
             'lastwhatsapp': newWhatsappMessage.id,
-            'lastMessageOn': ""+Date.now(),
+            'lastmessage': new Date(),
             'read': false
           }
         })

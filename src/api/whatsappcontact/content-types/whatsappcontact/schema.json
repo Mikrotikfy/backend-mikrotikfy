@@ -18,9 +18,6 @@
     "name": {
       "type": "string"
     },
-    "lastMessageOn": {
-      "type": "string"
-    },
     "lastwhatsapp": {
       "type": "relation",
       "relation": "oneToOne",
@@ -29,6 +26,9 @@
     "read": {
       "type": "boolean",
       "default": false
+    },
+    "lastmessage": {
+      "type": "datetime"
     }
   }
 }
