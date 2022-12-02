@@ -65,6 +65,12 @@ module.exports = {
             'read': false
           }
         })
+        await strapi.db.query('api::menu.menu').update({
+          where: { name: 'Escritorio' },
+          data: {
+            alert: true
+          }
+        })
         const phone_number_id = data.entry[0].changes[0].value.metadata.phone_number_id
         const from = data.entry[0].changes[0].value.messages[0].from
         fetch(`https://graph.facebook.com/v15.0/${phone_number_id}/messages?access_token=${TOKEN}`, {

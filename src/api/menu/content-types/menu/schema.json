@@ -30,6 +30,10 @@
     "priority": {
       "type": "integer",
       "default": -1
+    },
+    "alert": {
+      "type": "boolean",
+      "default": false
     }
   }
 }
