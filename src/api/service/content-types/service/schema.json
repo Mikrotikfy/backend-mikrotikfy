@@ -4,7 +4,8 @@
   "info": {
     "singularName": "service",
     "pluralName": "services",
-    "displayName": "service"
+    "displayName": "service",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -22,9 +23,9 @@
     },
     "client": {
       "type": "relation",
-      "relation": "oneToOne",
+      "relation": "manyToOne",
       "target": "api::client.client",
-      "inversedBy": "service"
+      "inversedBy": "services"
     }
   }
 }

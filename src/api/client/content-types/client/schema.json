@@ -201,11 +201,11 @@
       "default": false,
       "required": false
     },
-    "service": {
+    "services": {
       "type": "relation",
-      "relation": "oneToOne",
+      "relation": "oneToMany",
       "target": "api::service.service",
-      "inversedBy": "client"
+      "mappedBy": "client"
     }
   }
 }
