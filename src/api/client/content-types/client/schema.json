@@ -200,6 +200,12 @@
       "type": "boolean",
       "default": false,
       "required": false
+    },
+    "service": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::service.service",
+      "inversedBy": "client"
     }
   }
 }
