@@ -29,6 +29,9 @@
       "relation": "manyToOne",
       "target": "plugin::users-permissions.user",
       "inversedBy": "offermovements"
+    },
+    "details": {
+      "type": "string"
     }
   }
 }
