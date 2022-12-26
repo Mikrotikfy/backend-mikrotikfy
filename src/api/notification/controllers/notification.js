@@ -6,10 +6,10 @@
 
 module.exports = {
   listOfBills: async (ctx) => {
-    const { city, clienttype, month } = ctx.request.query
+    const { city, clienttype, month, year } = ctx.request.query
     const fs = require('fs')
     // directory path
-    const dir = `./public/fac/${month}/${city.toLowerCase()}/${clienttype.toLowerCase()}/`
+    const dir = `./public/fac/${year}/${month}/${city.toLowerCase()}/${clienttype.toLowerCase()}/`
 
     try {
       const files = fs.readdirSync(dir)

@@ -22,5 +22,8 @@
   "peacock.color": "#832561",
   "search.exclude": {
     "**/node_modules": false
-  }
+  },
+  "conventionalCommits.scopes": [
+    "backend"
+  ]
 }
