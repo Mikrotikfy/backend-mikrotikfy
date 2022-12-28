@@ -64,6 +64,9 @@
     },
     "escalatedoffice": {
       "type": "boolean"
+    },
+    "channel": {
+      "type": "string"
     }
   }
 }
