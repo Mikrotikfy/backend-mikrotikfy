@@ -26,6 +26,10 @@
       "relation": "manyToMany",
       "target": "api::clienttype.clienttype",
       "inversedBy": "tickettypes"
+    },
+    "requireverification": {
+      "type": "boolean",
+      "default": false
     }
   }
 }

@@ -40,7 +40,7 @@
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::tickettype.tickettype",
-      "inversedBy": "clienttypes"
+      "mappedBy": "clienttypes"
     }
   }
 }
