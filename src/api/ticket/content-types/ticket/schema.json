@@ -67,6 +67,15 @@
     },
     "channel": {
       "type": "string"
+    },
+    "reboot": {
+      "type": "boolean"
+    },
+    "network": {
+      "type": "boolean"
+    },
+    "on": {
+      "type": "boolean"
     }
   }
 }
