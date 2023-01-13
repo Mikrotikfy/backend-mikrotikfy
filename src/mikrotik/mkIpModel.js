@@ -1,13 +1,8 @@
-const RouterOSAPI = require("node-routeros").RouterOSAPI;
+const APIARNOP = require("./mkConnection").APIARNOP;
 module.exports.createAddressList = async function (payload) {
   const { mikrotik, ipmodel } = payload
   const { client } = ipmodel
-  const conn = new RouterOSAPI({
-    host: mikrotik.ip,
-    user: "API_ARNOP",
-    password: process.env.MIKROTIK_API_SECRET,
-    port: 8087,
-  });
+  const conn = await APIARNOP(mikrotikHost)
   try {
     console.log(ipmodel)
     await conn.connect();

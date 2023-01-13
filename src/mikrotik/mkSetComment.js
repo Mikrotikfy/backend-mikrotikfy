@@ -1,11 +1,6 @@
-const RouterOSAPI = require("node-routeros").RouterOSAPI;
+const APIARNOP = require("./mkConnection").APIARNOP;
 module.exports.mkSetComment = async function (payload) {
-  const conn = new RouterOSAPI({
-    host: payload.mikrotikHost,
-    user: "API_ARNOP",
-    password: process.env.MIKROTIK_API_SECRET,
-    port: 8087,
-  });
+  const conn = await APIARNOP(mikrotikHost)
   await conn.connect();
   if (payload.model === 1) {
     // eslint-disable-next-line no-unused-vars
@@ -52,16 +47,9 @@ module.exports.mkSetComment = async function (payload) {
 
 async function test () {
   try {
-    console.log('begin test funcion')
-    const conn = new RouterOSAPI({
-      host: '191.102.86.50',
-      user: "API_ARNOP",
-      password: process.env.MIKROTIK_API_SECRET,
-      port: 8087,
-    });
+    const conn = await APIARNOP(mikrotikHost)
     const connect = function() {
       conn.connect().then( () => {
-        console.log('begin streaming')
         conn.stream('/interface/print', ['stats-detail', '=interval=1', '?name=WAN'], (error, packet) => {
           // If you get a error (trap), the streaming will stop
           if(error) {
@@ -80,7 +68,6 @@ async function test () {
         return false;
       });
       conn.on('error', (err) => {
-        console.log('connection error, timeout or bad credentials.Triying to reconnect in 10 seconds')
         console.log(err); // Some error that ocurred when already connected
         setTimeout(() => {
           connect()

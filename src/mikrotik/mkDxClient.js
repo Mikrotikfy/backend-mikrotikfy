@@ -1,11 +1,6 @@
-const RouterOSAPI = require("node-routeros").RouterOSAPI;
+const APIARNOP = require("./mkConnection").APIARNOP;
 module.exports.mkDxClient = async function (input) {
-  const conn = new RouterOSAPI({
-    host: input.cityIp,
-    user: "API_ARNOP",
-    password: process.env.MIKROTIK_API_SECRET,
-    port: 8087,
-  });
+  const conn = await APIARNOP(mikrotikHost)
   try {
     await conn.connect();
     if (input.model === 1) {

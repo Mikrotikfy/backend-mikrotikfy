@@ -1,15 +1,10 @@
 /* eslint-disable no-undef */
-const RouterOSAPI = require("node-routeros").RouterOSAPI;
+const APIARNOP = require("./mkConnection").APIARNOP;
 module.exports.mkSetClientPlanInformation = async function (
   mikrotikHost,
   input
 ) {
-  const conn = new RouterOSAPI({
-    host: mikrotikHost,
-    user: "API_ARNOP",
-    password: strapi.config.get("server.admin.mikrotik.secret", "null"),
-    port: 8087,
-  });
+  const conn = await APIARNOP(mikrotikHost)
   try {
     await conn.connect();
     if (input.model === 1) {
@@ -59,12 +54,7 @@ module.exports.mkSetClientPlanInformation = async function (
   }
 };
 module.exports.mkGetMikrotikInfo = async function (mikrotikHost) {
-  const conn = new RouterOSAPI({
-    host: mikrotikHost,
-    user: "API_ARNOP",
-    password: strapi.config.get("server.admin.mikrotik.secret", "null"),
-    port: 8087,
-  });
+  const conn = await APIARNOP(mikrotikHost)
   await conn.connect();
   try {
     var com1 = await conn.write("/system/identity/print").catch((error) => {
@@ -117,12 +107,7 @@ module.exports.mkClientStatus = async function (
     upload: null,
   };
   /* Mikrotik connection init */
-  const conn = new RouterOSAPI({
-    host: mikrotikHost,
-    user: "API_ARNOP",
-    password: process.env.MIKROTIK_API_SECRET,
-    port: 8087,
-  });
+  const conn = await APIARNOP(mikrotikHost)
 
   await conn.connect();
 
@@ -213,12 +198,7 @@ module.exports.mkActiveClientCount = async function (cityIpArray) {
   if (cityIpArray.length > 1) {
     const cityActiveClients = [];
     for (let i = 0; i < cityIpArray.length; i++) {
-      const conn = new RouterOSAPI({
-        host: cityIpArray[i],
-        user: "API_ARNOP",
-        password: strapi.config.get("server.admin.mikrotik.secret", "null"),
-        port: 8087,
-      });
+      const conn = await APIARNOP(mikrotikHost)
       await conn.connect();
       const result = await conn.write("/ppp/active/getall", [
         "=.proplist=name",
@@ -228,7 +208,7 @@ module.exports.mkActiveClientCount = async function (cityIpArray) {
     }
     return cityActiveClients[0].concat(cityActiveClients[1]);
   } else {
-    const conn = new RouterOSAPI({
+    const conn = new APIARNOP({
       host: cityIpArray[0],
       user: "API_ARNOP",
       password: strapi.config.get("server.admin.mikrotik.secret", "null"),
@@ -244,12 +224,7 @@ module.exports.mkActiveClientCount = async function (cityIpArray) {
 };
 module.exports.mkGetSecrets = async function (mikrotikHost) {
   try {
-    const conn = new RouterOSAPI({
-      host: mikrotikHost,
-      user: "API_ARNOP",
-      password: strapi.config.get("server.admin.mikrotik.secret", "null"),
-      port: 8087,
-    });
+    const conn = await APIARNOP(mikrotikHost)
     await conn.connect();
     // eslint-disable-next-line no-unused-vars
     var com1 = await conn.write("/ppp/secret/getall", [
@@ -264,12 +239,7 @@ module.exports.mkGetSecrets = async function (mikrotikHost) {
 };
 module.exports.mkGetComment = async function (mikrotikHost, dni, code, model) {
   try {
-    const conn = new RouterOSAPI({
-      host: mikrotikHost,
-      user: "API_ARNOP",
-      password: strapi.config.get("server.admin.mikrotik.secret", "null"),
-      port: 8087,
-    });
+    const conn = await APIARNOP(mikrotikHost)
     await conn.connect();
     if (model === 1) {
       // eslint-disable-next-line no-unused-vars
@@ -298,12 +268,7 @@ module.exports.mkSetComment = async function (
   model,
   comment
 ) {
-  const conn = new RouterOSAPI({
-    host: mikrotikHost,
-    user: "API_ARNOP",
-    password: strapi.config.get("server.admin.mikrotik.secret", "null"),
-    port: 8087,
-  });
+  const conn = await APIARNOP(mikrotikHost)
   await conn.connect();
   if (
     comment !== "" &&
@@ -358,12 +323,7 @@ module.exports.mkSetComment = async function (
   }
 };
 module.exports.mkDxClient = async function (input) {
-  const conn = new RouterOSAPI({
-    host: input.cityIp,
-    user: "API_ARNOP",
-    password: strapi.config.get("server.admin.mikrotik.secret", "null"),
-    port: 8087,
-  });
+  const conn = await APIARNOP(mikrotikHost)
   try {
     await conn.connect();
     if (input.model === 1) {

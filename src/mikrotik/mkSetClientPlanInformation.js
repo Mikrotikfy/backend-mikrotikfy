@@ -1,14 +1,9 @@
-const RouterOSAPI = require("node-routeros").RouterOSAPI;
+const APIARNOP = require("./mkConnection").APIARNOP;
 module.exports.mkSetClientPlanInformation = async function (
   mikrotikHost,
   input
 ) {
-  const conn = new RouterOSAPI({
-    host: mikrotikHost,
-    user: "API_ARNOP",
-    password: process.env.MIKROTIK_API_SECRET,
-    port: 8087,
-  });
+  const conn = await APIARNOP(mikrotikHost)
   try {
     await conn.connect();
     if (input.model === 1) {

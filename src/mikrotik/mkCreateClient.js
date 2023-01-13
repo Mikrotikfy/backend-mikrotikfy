@@ -1,14 +1,9 @@
-const RouterOSAPI = require("node-routeros").RouterOSAPI;
+const APIARNOP = require("./mkConnection").APIARNOP;
 module.exports.mkCreateClient = async function (
   mikrotikHost,
   client
 ) {
-  const conn = new RouterOSAPI({
-    host: mikrotikHost,
-    user: "API_ARNOP",
-    password: process.env.MIKROTIK_API_SECRET,
-    port: 8087,
-  });
+  const conn = await APIARNOP(mikrotikHost)
   const mkPlan = client.plan ? client.plan.mikrotik_name : client.offer.plan.mikrotik_name
   const comment = `${client.code} NO DEF. ${client.neighborhood.name} ${client.address} ${client.name} ${client.dni} ${client.city.name} ${client.plan ? client.plan.name : client.offer.plan.name} NAP-ONU: ${client.nap_onu_address} POTENCIA: ${client.opticalPower} ${client.wifi_ssid} ${client.wifi_password}`;
   await conn
