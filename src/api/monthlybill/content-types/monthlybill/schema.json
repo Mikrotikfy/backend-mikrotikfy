@@ -32,6 +32,12 @@
     },
     "type": {
       "type": "string"
+    },
+    "resend": {
+      "type": "integer"
+    },
+    "resend_at": {
+      "type": "string"
     }
   }
 }
