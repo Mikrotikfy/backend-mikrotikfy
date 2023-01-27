@@ -1,6 +1,6 @@
 const APIARNOP = require("./mkConnection").APIARNOP;
 module.exports.mkSetComment = async function (payload) {
-  const conn = await APIARNOP(mikrotikHost)
+  const conn = await APIARNOP(payload.mikrotikHost)
   await conn.connect();
   if (payload.model === 1) {
     // eslint-disable-next-line no-unused-vars
