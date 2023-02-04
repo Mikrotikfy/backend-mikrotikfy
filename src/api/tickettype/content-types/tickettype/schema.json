@@ -30,6 +30,9 @@
     "requireverification": {
       "type": "boolean",
       "default": false
+    },
+    "requiresextrainfo": {
+      "type": "boolean"
     }
   }
 }

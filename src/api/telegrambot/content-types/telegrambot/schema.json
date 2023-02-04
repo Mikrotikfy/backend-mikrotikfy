@@ -4,7 +4,8 @@
   "info": {
     "singularName": "telegrambot",
     "pluralName": "telegrambots",
-    "displayName": "telegrambot"
+    "displayName": "telegrambot",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -31,6 +32,9 @@
       "relation": "manyToOne",
       "target": "api::city.city",
       "inversedBy": "telegrambots"
+    },
+    "tvchat": {
+      "type": "string"
     }
   }
 }

@@ -76,6 +76,12 @@
     },
     "on": {
       "type": "boolean"
+    },
+    "tvspec": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::tvspec.tvspec",
+      "mappedBy": "ticket"
     }
   }
 }

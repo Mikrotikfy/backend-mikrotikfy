@@ -134,12 +134,6 @@
       "target": "api::clienttype.clienttype",
       "inversedBy": "clients"
     },
-    "tvspecs": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::tvspec.tvspec",
-      "mappedBy": "client"
-    },
     "ipmodel": {
       "type": "integer",
       "default": 0
@@ -200,6 +194,12 @@
       "type": "boolean",
       "default": false,
       "required": false
+    },
+    "tvspec": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::tvspec.tvspec",
+      "mappedBy": "client"
     }
   }
 }

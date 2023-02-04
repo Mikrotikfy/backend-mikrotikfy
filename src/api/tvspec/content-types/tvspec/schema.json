@@ -32,9 +32,27 @@
     },
     "client": {
       "type": "relation",
-      "relation": "manyToOne",
+      "relation": "oneToOne",
       "target": "api::client.client",
-      "inversedBy": "tvspecs"
+      "inversedBy": "tvspec"
+    },
+    "tvs": {
+      "type": "integer"
+    },
+    "notvs": {
+      "type": "boolean"
+    },
+    "ticketdetail": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::ticketdetail.ticketdetail",
+      "inversedBy": "tvspec"
+    },
+    "ticket": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::ticket.ticket",
+      "inversedBy": "tvspec"
     }
   }
 }

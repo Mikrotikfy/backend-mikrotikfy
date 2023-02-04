@@ -26,6 +26,12 @@
       "relation": "manyToOne",
       "target": "plugin::users-permissions.user",
       "inversedBy": "ticketdetails"
+    },
+    "tvspec": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::tvspec.tvspec",
+      "mappedBy": "ticketdetail"
     }
   }
 }
