@@ -71,7 +71,7 @@ module.exports = {
                 }
               ],  
             },
-            populate: ['city', 'plan', 'addresses', 'addresses.neighborhood', 'neighborhood', 'technology', 'clienttype', 'vlan', 'offer', 'offer.plan', 'offermovements.offer', 'monthlybills', 'tvspec', 'tvspec.tvspectype' ],
+            populate: ['city', 'plan', 'addresses', 'addresses.neighborhood', 'neighborhood', 'technology', 'clienttype', 'vlan', 'offer', 'offer.plan', 'offermovements.offer', 'offermovements', 'debtmovements', 'debtmovements.technician', 'monthlybills', 'tvspec', 'tvspec.tvspectype' ],
             orderBy: { code: 'asc' }
           })
           const sanitizedEntity = await sanitize.contentAPI.output(res);

@@ -24,7 +24,7 @@
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::city.city",
-      "inversedBy": "neighborhoods"
+      "mappedBy": "neighborhoods"
     },
     "naps": {
       "type": "relation",

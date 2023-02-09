@@ -67,7 +67,7 @@
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::city.city",
-      "inversedBy": "users"
+      "mappedBy": "users"
     },
     "tickets": {
       "type": "relation",

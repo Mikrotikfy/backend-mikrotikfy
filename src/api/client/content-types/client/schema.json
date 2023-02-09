@@ -30,9 +30,6 @@
     "wifi_password": {
       "type": "string"
     },
-    "comment": {
-      "type": "text"
-    },
     "newModel": {
       "type": "integer"
     },
@@ -41,26 +38,6 @@
       "default": false
     },
     "phone": {
-      "type": "string"
-    },
-    "sendToMikrotik": {
-      "type": "boolean"
-    },
-    "operator_role": {
-      "type": "string"
-    },
-    "hasRepeater": {
-      "type": "boolean",
-      "default": false
-    },
-    "hasPendingRx": {
-      "type": "boolean",
-      "default": false
-    },
-    "nap_onu_address": {
-      "type": "string"
-    },
-    "opticalPower": {
       "type": "string"
     },
     "activationrequest": {
@@ -122,12 +99,6 @@
       "relation": "oneToOne",
       "target": "plugin::users-permissions.user"
     },
-    "histories": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::history.history",
-      "mappedBy": "client"
-    },
     "clienttype": {
       "type": "relation",
       "relation": "manyToOne",
@@ -177,23 +148,11 @@
     "email": {
       "type": "string"
     },
-    "electronicbill": {
-      "type": "boolean",
-      "default": true
-    },
     "monthlybills": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::monthlybill.monthlybill",
       "mappedBy": "client"
-    },
-    "monthlybill": {
-      "type": "string"
-    },
-    "sendmonthlybill": {
-      "type": "boolean",
-      "default": false,
-      "required": false
     },
     "tvspec": {
       "type": "relation",
