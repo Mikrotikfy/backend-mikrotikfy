@@ -12,6 +12,14 @@
   },
   "pluginOptions": {},
   "attributes": {
+    "active": {
+      "type": "boolean",
+      "default": false
+    },
+    "indebt": {
+      "type": "boolean",
+      "default": false
+    },
     "code": {
       "type": "string"
     },
@@ -33,12 +41,15 @@
     "newModel": {
       "type": "integer"
     },
-    "active": {
-      "type": "boolean",
-      "default": false
-    },
     "phone": {
       "type": "string"
+    },
+    "email": {
+      "type": "string"
+    },
+    "ipmodel": {
+      "type": "integer",
+      "default": 0
     },
     "activationrequest": {
       "type": "relation",
@@ -105,10 +116,6 @@
       "target": "api::clienttype.clienttype",
       "inversedBy": "clients"
     },
-    "ipmodel": {
-      "type": "integer",
-      "default": 0
-    },
     "staticip": {
       "type": "relation",
       "relation": "oneToOne",
@@ -144,9 +151,6 @@
       "relation": "oneToMany",
       "target": "api::offermovement.offermovement",
       "mappedBy": "client"
-    },
-    "email": {
-      "type": "string"
     },
     "monthlybills": {
       "type": "relation",
