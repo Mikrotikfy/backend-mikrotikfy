@@ -12,10 +12,6 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "db": {
-      "type": "integer",
-      "default": 0
-    },
     "high": {
       "type": "integer",
       "default": 0
