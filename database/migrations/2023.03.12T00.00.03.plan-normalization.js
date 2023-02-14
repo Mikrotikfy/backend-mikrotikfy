@@ -9,7 +9,7 @@ module.exports = {
         .limit(1)
         .toString();
       const clients = await knex
-      .select('clients.id', 'clients.code', 'clients.indebt', 'clients.active', 'clienttypes.name AS clienttype_name', knex.raw(`EXISTS(${subquery}) AS has_offer`))
+      .select('clients.id', 'clients.code', 'clients.indebt', 'clients.active', 'plans.id as plan_id', 'clienttypes.name AS clienttype_name', knex.raw(`EXISTS(${subquery}) AS has_offer`))
       .from('clients')
       .join('clients_plan_links', 'clients.id', '=', 'clients_plan_links.client_id')
       .join('plans', 'clients_plan_links.plan_id', '=', 'plans.id')
@@ -19,7 +19,6 @@ module.exports = {
       .leftJoin('offers', 'clients_offer_links.offer_id', '=', 'offers.id')
       .where({ 'clienttypes.name': 'INTERNET'})
       strapi.log.info(`Found ${clients.length} clients to normalize...`);
-      strapi.log.info(JSON.stringify(clients[0]))
       for (let i = 0; i < clients.length; i++) {
         if (clients[i].plan_id === 7 && clients[i].has_offer === '0') {
           strapi.log.info(`Apply DX and Offer ${clients[i].code}...`);
@@ -38,7 +37,7 @@ module.exports = {
             strapi.log.error(error);
           })
         }
-        else if (clients[i].plan_id === 7 &&  clients[i].has_offer === '1') {
+        else if (clients[i].plan_id === 7 && clients[i].has_offer === '1') {
           strapi.log.info(`Apply DX only ${clients[i].code}...`);
           await knex('clients')
           .where({ id: clients[i].id })
@@ -99,6 +98,15 @@ module.exports = {
             client_id: clients[i].id,
             offer_id: getOfferByPlan(clients[i].plan_id),
             client_order: null
+          })
+        }
+        else if ((clients[i].plan_id !== 7 && clients[i].plan_id !== 8) && clients[i].has_offer === '1') {
+          strapi.log.info(`Update debt from offer ${clients[i].code}...`);
+          await knex('clients')
+          .where({ id: clients[i].id })
+          .update({
+            indebt: false,
+            active: true,
           })
         }
         else {

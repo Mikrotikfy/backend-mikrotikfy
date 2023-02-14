@@ -20,6 +20,8 @@ module.exports = {
           strapi.log.info(`Migrating address for code ${clients[i].code}...`);
           await knex.from('addresses').insert({
             address: clients[i].address,
+            created_at: new Date(),
+            published_at: new Date(),
           })
           .catch((error) => {
             strapi.log.error(error);
