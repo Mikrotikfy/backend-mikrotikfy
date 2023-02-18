@@ -41,6 +41,12 @@
       "relation": "manyToMany",
       "target": "api::tickettype.tickettype",
       "mappedBy": "clienttypes"
+    },
+    "billingperiods": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::billingperiod.billingperiod",
+      "mappedBy": "clienttype"
     }
   }
 }
