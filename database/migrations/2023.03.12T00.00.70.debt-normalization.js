@@ -49,7 +49,7 @@ module.exports = {
             client_id: clients[i].id,
             offer_id: getOfferByPlan(clients[i].plan_id),
             client_order: null
-          }).onConflict('offer_id')
+          })
           .ignore()
           .catch((error) => {
             strapi.log.error(error);
