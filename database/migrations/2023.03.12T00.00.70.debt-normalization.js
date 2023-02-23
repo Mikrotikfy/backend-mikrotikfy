@@ -45,12 +45,6 @@ module.exports = {
             indebt: clients[i].plan_id === 7 ? true : false,
             active: clients[i].plan_id === 8 ? false : true
           })
-          await knex.from('clients_offer_links').insert({
-            client_id: clients[i].id,
-            offer_id: getOfferByPlan(clients[i].plan_id),
-            client_order: null
-          })
-          .ignore()
           .catch((error) => {
             strapi.log.error(error);
           })
