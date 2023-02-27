@@ -51,11 +51,15 @@
       "type": "integer",
       "default": 0
     },
-    "activationrequest": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::activationrequest.activationrequest",
-      "mappedBy": "client"
+    "balance": {
+      "type": "integer",
+      "default": 0
+    },
+    "billingmonth": {
+      "type": "integer"
+    },
+    "billingyear": {
+      "type": "integer"
     },
     "city": {
       "type": "relation",
@@ -163,12 +167,6 @@
       "relation": "oneToOne",
       "target": "api::tvspec.tvspec",
       "mappedBy": "client"
-    },
-    "billingmonth": {
-      "type": "integer"
-    },
-    "billingyear": {
-      "type": "integer"
     }
   }
 }

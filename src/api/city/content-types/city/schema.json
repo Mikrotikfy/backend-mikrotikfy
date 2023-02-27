@@ -45,12 +45,6 @@
       "target": "api::ticket.ticket",
       "mappedBy": "city"
     },
-    "activationrequests": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::activationrequest.activationrequest",
-      "mappedBy": "city"
-    },
     "telegrambots": {
       "type": "relation",
       "relation": "oneToMany",
