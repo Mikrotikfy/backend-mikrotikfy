@@ -48,6 +48,12 @@
       "relation": "oneToMany",
       "target": "api::offermovement.offermovement",
       "mappedBy": "offer"
+    },
+    "invoices": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::invoice.invoice",
+      "mappedBy": "offer"
     }
   }
 }
