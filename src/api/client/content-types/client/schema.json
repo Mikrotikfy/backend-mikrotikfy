@@ -167,6 +167,9 @@
       "relation": "oneToOne",
       "target": "api::tvspec.tvspec",
       "mappedBy": "client"
+    },
+    "stratum": {
+      "type": "integer"
     }
   }
 }
