@@ -116,6 +116,12 @@
       "relation": "oneToMany",
       "target": "api::offermovement.offermovement",
       "mappedBy": "technician"
+    },
+    "ticketstechnician": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::ticket.ticket",
+      "mappedBy": "technician"
     }
   }
 }

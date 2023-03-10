@@ -82,6 +82,12 @@
       "relation": "oneToOne",
       "target": "api::tvspec.tvspec",
       "mappedBy": "ticket"
+    },
+    "technician": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "ticketstechnician"
     }
   }
 }
