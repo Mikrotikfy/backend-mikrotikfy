@@ -29,6 +29,9 @@
     },
     "lastmessage": {
       "type": "datetime"
+    },
+    "pendingmessages": {
+      "type": "integer"
     }
   }
 }

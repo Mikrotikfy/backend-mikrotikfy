@@ -62,6 +62,7 @@ module.exports = {
           data: {
             'lastwhatsapp': newWhatsappMessage.id,
             'lastmessage': new Date(),
+            'pendingmessages': contact.results[0].pendingmessages ? contact.results[0].pendingmessages + 1 : 1,
             'read': false
           }
         })
