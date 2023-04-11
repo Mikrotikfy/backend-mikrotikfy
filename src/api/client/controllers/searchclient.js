@@ -32,6 +32,9 @@ module.exports = {
                 {
                   $or: [
                     {
+                      id: search
+                    },
+                    {
                       code: {
                         $contains: search
                       }
