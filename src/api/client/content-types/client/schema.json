@@ -170,6 +170,12 @@
     },
     "stratum": {
       "type": "integer"
+    },
+    "invoices": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::invoice.invoice",
+      "mappedBy": "client"
     }
   }
 }

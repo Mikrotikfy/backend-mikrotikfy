@@ -30,9 +30,23 @@
       "target": "api::offer.offer",
       "inversedBy": "invoices"
     },
-    "invoice": {
-      "type": "uid",
-      "targetField": "type"
+    "concept": {
+      "type": "string"
+    },
+    "payed": {
+      "type": "boolean"
+    },
+    "partial": {
+      "type": "boolean"
+    },
+    "indebt": {
+      "type": "boolean"
+    },
+    "client": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::client.client",
+      "inversedBy": "invoices"
     }
   }
 }
