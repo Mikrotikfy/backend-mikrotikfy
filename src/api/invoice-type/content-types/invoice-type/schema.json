@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "invoice_types",
+  "info": {
+    "singularName": "invoice-type",
+    "pluralName": "invoice-types",
+    "displayName": "invoice-type",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "invoices": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::invoice.invoice",
+      "mappedBy": "invoice_type"
+    }
+  }
+}

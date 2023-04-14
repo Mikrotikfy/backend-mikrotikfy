@@ -12,7 +12,7 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "value": {
+    "balance": {
       "type": "integer"
     },
     "month": {
@@ -47,6 +47,21 @@
       "relation": "manyToOne",
       "target": "api::client.client",
       "inversedBy": "invoices"
+    },
+    "invoice_movements": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::invoice-movement.invoice-movement",
+      "mappedBy": "invoice"
+    },
+    "invoice_type": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::invoice-type.invoice-type",
+      "inversedBy": "invoices"
+    },
+    "value": {
+      "type": "integer"
     }
   }
 }

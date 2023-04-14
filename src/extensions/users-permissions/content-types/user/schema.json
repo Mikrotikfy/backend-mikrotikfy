@@ -128,6 +128,12 @@
     },
     "phone": {
       "type": "string"
+    },
+    "invoice_movements": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::invoice-movement.invoice-movement",
+      "mappedBy": "biller"
     }
   }
 }
