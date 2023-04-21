@@ -176,6 +176,9 @@
       "relation": "oneToMany",
       "target": "api::invoice.invoice",
       "mappedBy": "client"
+    },
+    "opticalpower": {
+      "type": "integer"
     }
   }
 }
