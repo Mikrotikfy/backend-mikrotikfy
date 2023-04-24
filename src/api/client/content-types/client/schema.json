@@ -179,6 +179,13 @@
     },
     "opticalpower": {
       "type": "integer"
+    },
+    "signed": {
+      "type": "boolean",
+      "default": false
+    },
+    "signature": {
+      "type": "string"
     }
   }
 }
