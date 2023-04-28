@@ -98,6 +98,14 @@
     },
     "signature": {
       "type": "string"
+    },
+    "media": {
+      "allowedTypes": [
+        "images",
+        "videos"
+      ],
+      "type": "media",
+      "multiple": true
     }
   }
 }
