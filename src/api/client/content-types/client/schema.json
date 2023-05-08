@@ -186,6 +186,9 @@
     },
     "signature": {
       "type": "string"
+    },
+    "update_password": {
+      "type": "boolean"
     }
   }
 }
