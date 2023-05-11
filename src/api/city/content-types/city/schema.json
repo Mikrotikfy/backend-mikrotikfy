@@ -104,6 +104,12 @@
       "relation": "oneToMany",
       "target": "api::debtmovement.debtmovement",
       "mappedBy": "city"
+    },
+    "user_preferred_cities": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "plugin::users-permissions.user",
+      "mappedBy": "preferredcity"
     }
   }
 }

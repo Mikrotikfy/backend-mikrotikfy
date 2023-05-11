@@ -55,16 +55,6 @@ module.exports = {
                       }
                     },
                     {
-                      technology: {
-                        name: search
-                      }
-                    },
-                    {
-                      plan: {
-                        name: search
-                      }
-                    },
-                    {
                       dni: search
                     },
                     {

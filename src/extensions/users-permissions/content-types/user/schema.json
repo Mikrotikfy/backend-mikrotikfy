@@ -134,6 +134,12 @@
       "relation": "oneToMany",
       "target": "api::invoice-movement.invoice-movement",
       "mappedBy": "biller"
+    },
+    "preferredcity": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::city.city",
+      "inversedBy": "user_preferred_cities"
     }
   }
 }
