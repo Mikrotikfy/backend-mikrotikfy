@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "pppoe_events",
+  "info": {
+    "singularName": "pppoe-event",
+    "pluralName": "pppoe-events",
+    "displayName": "pppoe-event"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "type": {
+      "type": "string",
+      "default": "indeterminate"
+    },
+    "client": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::client.client",
+      "inversedBy": "pppoe_events"
+    }
+  }
+}

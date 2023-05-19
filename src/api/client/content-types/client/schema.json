@@ -192,6 +192,12 @@
     },
     "corporate": {
       "type": "boolean"
+    },
+    "pppoe_events": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::pppoe-event.pppoe-event",
+      "mappedBy": "client"
     }
   }
 }
