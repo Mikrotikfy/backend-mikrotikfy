@@ -100,12 +100,16 @@
       "type": "string"
     },
     "media": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
       "allowedTypes": [
         "images",
         "videos"
-      ],
-      "type": "media",
-      "multiple": true
+      ]
+    },
+    "time": {
+      "type": "datetime"
     }
   }
 }
