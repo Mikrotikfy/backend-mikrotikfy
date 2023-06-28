@@ -26,5 +26,12 @@ module.exports = ({ env }) => ({
       },
     },
   },
+  "users-permissions": {
+    config: {
+      register: {
+        allowedFields: ["role", "cities", 'tickets', 'ticketdetails', 'clienttypes', 'materialhistories', 'menu', 'staticips', 'debtmovements', 'offermovements', 'ticketstechnician', 'telegramchatid', 'phone', 'invoice_movements', 'preferredcity'],
+      },
+    },
+  },
   // ..
 });
