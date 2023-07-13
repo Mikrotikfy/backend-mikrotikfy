@@ -65,6 +65,12 @@
     },
     "details": {
       "type": "string"
+    },
+    "receipt": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::receipt.receipt",
+      "inversedBy": "invoices"
     }
   }
 }
