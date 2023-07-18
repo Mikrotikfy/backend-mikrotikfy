@@ -66,10 +66,10 @@
     "details": {
       "type": "string"
     },
-    "receipt": {
+    "legal_note": {
       "type": "relation",
       "relation": "manyToOne",
-      "target": "api::receipt.receipt",
+      "target": "api::legal-note.legal-note",
       "inversedBy": "invoices"
     }
   }

@@ -140,6 +140,12 @@
       "relation": "manyToOne",
       "target": "api::city.city",
       "inversedBy": "user_preferred_cities"
+    },
+    "legal_notes": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::legal-note.legal-note",
+      "mappedBy": "biller"
     }
   }
 }

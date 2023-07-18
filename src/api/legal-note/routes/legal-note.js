@@ -1,9 +1,9 @@
 'use strict';
 
 /**
- * receipt router
+ * legal-note router
  */
 
 const { createCoreRouter } = require('@strapi/strapi').factories;
 
-module.exports = createCoreRouter('api::receipt.receipt');
+module.exports = createCoreRouter('api::legal-note.legal-note');

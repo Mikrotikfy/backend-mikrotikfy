@@ -1,0 +1,39 @@
+{
+  "kind": "collectionType",
+  "collectionName": "legal_notes",
+  "info": {
+    "singularName": "legal-note",
+    "pluralName": "legal-notes",
+    "displayName": "legal-note"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "amount": {
+      "type": "integer"
+    },
+    "biller": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "legal_notes"
+    },
+    "invoices": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::invoice.invoice",
+      "mappedBy": "legal_note"
+    },
+    "client": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::client.client",
+      "inversedBy": "legal_notes"
+    },
+    "type": {
+      "type": "string"
+    }
+  }
+}

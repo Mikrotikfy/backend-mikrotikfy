@@ -1,9 +1,9 @@
 'use strict';
 
 /**
- * receipt service
+ * legal-note service
  */
 
 const { createCoreService } = require('@strapi/strapi').factories;
 
-module.exports = createCoreService('api::receipt.receipt');
+module.exports = createCoreService('api::legal-note.legal-note');

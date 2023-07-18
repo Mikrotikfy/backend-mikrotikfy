@@ -198,6 +198,12 @@
       "relation": "oneToMany",
       "target": "api::pppoe-event.pppoe-event",
       "mappedBy": "client"
+    },
+    "legal_notes": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::legal-note.legal-note",
+      "mappedBy": "client"
     }
   }
 }
