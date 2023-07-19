@@ -4,14 +4,15 @@
   "info": {
     "singularName": "legal-note",
     "pluralName": "legal-notes",
-    "displayName": "legal-note"
+    "displayName": "legal-note",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
-    "amount": {
+    "debit": {
       "type": "integer"
     },
     "biller": {
@@ -32,8 +33,8 @@
       "target": "api::client.client",
       "inversedBy": "legal_notes"
     },
-    "type": {
-      "type": "string"
+    "credit": {
+      "type": "integer"
     }
   }
 }
