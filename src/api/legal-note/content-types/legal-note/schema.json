@@ -23,9 +23,9 @@
     },
     "invoices": {
       "type": "relation",
-      "relation": "oneToMany",
+      "relation": "manyToMany",
       "target": "api::invoice.invoice",
-      "mappedBy": "legal_note"
+      "mappedBy": "legal_notes"
     },
     "client": {
       "type": "relation",
@@ -35,6 +35,15 @@
     },
     "credit": {
       "type": "integer"
+    },
+    "concept": {
+      "type": "string"
+    },
+    "invoice_movements": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::invoice-movement.invoice-movement",
+      "mappedBy": "legal_note"
     }
   }
 }

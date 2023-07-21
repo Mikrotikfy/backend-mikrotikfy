@@ -29,6 +29,18 @@
       "relation": "manyToOne",
       "target": "plugin::users-permissions.user",
       "inversedBy": "invoice_movements"
+    },
+    "legal_note": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::legal-note.legal-note",
+      "inversedBy": "invoice_movements"
+    },
+    "concept": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string"
     }
   }
 }
