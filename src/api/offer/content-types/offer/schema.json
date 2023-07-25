@@ -54,6 +54,12 @@
       "relation": "oneToMany",
       "target": "api::invoice.invoice",
       "mappedBy": "offer"
+    },
+    "city": {
+      "type": "string"
+    },
+    "clienttype": {
+      "type": "string"
     }
   }
 }
