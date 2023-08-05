@@ -44,6 +44,12 @@
       "relation": "oneToMany",
       "target": "api::invoice-movement.invoice-movement",
       "mappedBy": "legal_note"
+    },
+    "city": {
+      "type": "string"
+    },
+    "clienttype": {
+      "type": "string"
     }
   }
 }
