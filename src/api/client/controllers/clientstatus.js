@@ -21,20 +21,25 @@ module.exports = {
       const mkResponse = response.filter(mikrotik => mikrotik.exists === true)
       const onlineRes = mkResponse.filter(mikrotik => mikrotik.online === true)
       if (onlineRes.length > 0) {
-        return onlineRes[0]
+        return { data: onlineRes[0], error: null }
       } else {
-        const goodReponse = mkResponse.filter(client => client.offlineTime !== 'jan/01/1970 00:00:00')
-        let mostRecentDate = new Date(Math.max.apply(null, goodReponse.map( e => {
-          return new Date(e.offlineTime);
-        })));
-        let mostRecentClient = goodReponse.filter( e => { 
-            const d = new Date( e.offlineTime ); 
-            return d.getTime() == mostRecentDate.getTime();
-        })[0];
-        return mostRecentClient
+        if (ipList.length > 1 ) {
+          const goodReponse = mkResponse.filter(client => client.offlineTime !== '1970-01-01 00:00:00')
+          console.log(goodReponse)
+          let mostRecentDate = new Date(Math.max.apply(null, goodReponse.map( e => {
+            return new Date(e.offlineTime);
+          })));
+          let mostRecentClient = goodReponse.filter( e => { 
+              const d = new Date( e.offlineTime ); 
+              return d.getTime() == mostRecentDate.getTime();
+          })[0];
+          return { data: mostRecentClient, error: null }
+        } else {
+          return { data: response[0], error: null }
+        }
       }
     } else {
-      return response[0]
+      return { data: response[0], error: 500 }
     }
   },
 };

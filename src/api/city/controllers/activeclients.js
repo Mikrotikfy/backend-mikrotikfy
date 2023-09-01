@@ -1,5 +1,5 @@
 'use strict';
-
+const fetch = require('node-fetch')
 /**
  * A set of functions called "actions" for `activeclients`
  */
@@ -34,7 +34,8 @@ module.exports = {
         '=.proplist=name',
       ])
       conn.close()
-      await sendWhatsApp(id, result2.length)
+      const res = await sendWhatsApp(id, result2.length)
+      console.log(await res.json())
       await updateCityActive(id, result2.length)
       return {
         activeclients: result2.length
@@ -55,7 +56,7 @@ function sendWhatsApp (id, activeClients) {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${token}`
+      Authorization: `Bearer ${process.env.META_TOKEN}`
     },
     body: JSON.stringify(
       {
@@ -69,15 +70,20 @@ function sendWhatsApp (id, activeClients) {
           },
           components: [
             {
+              type: 'header',
+              parameters: [
+                {
+                  type: 'text',
+                  text: 'ONLINE'
+                }
+              ]
+            },
+            {
               type: 'body',
               parameters: [
                 {
                   type: 'text',
-                  text: `${activeClients > 0 ? 'ONLINE' : 'OFFLINE' }`
-                },
-                {
-                  type: 'text',
-                  text: `${activeClients}`
+                  text: activeClients+''
                 }
               ]
             }

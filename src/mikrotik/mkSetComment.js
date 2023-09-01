@@ -7,12 +7,11 @@ module.exports.mkSetComment = async function (payload) {
     try {
       var com1 = await conn
         .write("/ppp/secret/set", ["=.id=" + payload.code, "=comment=" + payload.comment])
-        .then(() => {          
+        .then(() => {
           return true;
         })
         .catch((err) => {
           console.log(err.message);
-          conn.close();
           return false;
         });
     } catch (error) {
@@ -29,7 +28,6 @@ module.exports.mkSetComment = async function (payload) {
         })
         .catch((err) => {
           console.log(err.message);
-          conn.close();
           return false;
         });
     } catch (error) {
