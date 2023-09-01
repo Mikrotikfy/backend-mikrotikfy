@@ -35,7 +35,7 @@ module.exports = {
           })[0];
           return { data: mostRecentClient, error: null }
         } else {
-          return { data: response[0], error: null }
+          return { data: response[0], error: response[0].exists ? null : 500 }
         }
       }
     } else {
