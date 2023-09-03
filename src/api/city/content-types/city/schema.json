@@ -110,6 +110,10 @@
       "relation": "oneToMany",
       "target": "plugin::users-permissions.user",
       "mappedBy": "preferredcity"
+    },
+    "requiresphone": {
+      "type": "boolean",
+      "default": false
     }
   }
 }
