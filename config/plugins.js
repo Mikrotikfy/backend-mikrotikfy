@@ -33,5 +33,28 @@ module.exports = ({ env }) => ({
       },
     },
   },
-  // ..
+  "fuzzy-search": {
+    enabled: true,
+    config: {
+      contentTypes: [
+        {
+          uid: "api::client.client",
+          modelName: "client",
+          transliterate: true,
+          fuzzysortOptions: {
+            characterLimit: 50,
+            threshold: -100,
+            limit: 5,
+            keys: [
+              {
+                name: "address",
+                weight: 600,
+              },
+            ],
+          },
+        },
+      ],
+    },
+  },
+
 });

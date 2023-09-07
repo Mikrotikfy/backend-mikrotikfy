@@ -10,13 +10,14 @@
     "strapi": "strapi"
   },
   "dependencies": {
-    "@strapi/strapi": "4.11.3",
-    "@strapi/plugin-users-permissions": "4.11.3",
     "@strapi/plugin-i18n": "4.11.3",
+    "@strapi/plugin-users-permissions": "4.11.3",
+    "@strapi/strapi": "4.11.3",
     "formdata-node": "^5.0.0",
     "mysql": "2.18.1",
     "node-fetch": "2.6.1",
     "node-routeros": "^1.6.9",
+    "strapi-plugin-fuzzy-search": "^2.0.5",
     "strapi-plugin-transformer": "^2.1.0"
   },
   "author": {
