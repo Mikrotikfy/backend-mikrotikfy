@@ -138,6 +138,12 @@ module.exports.mkClientStatus = async function (
           conn.close();
           return error;
         });
+      var getInterfacePppoeConnection = await conn
+        .write("/interface/pppoe-server/print", ["?=name=<pppoe-" + code + ">"])
+        .catch((error) => {
+          conn.close();
+          return error;
+        });
     } else {
       // eslint-disable-next-line no-redeclare
       var getSecret = await conn
@@ -159,6 +165,12 @@ module.exports.mkClientStatus = async function (
           conn.close();
           return error;
         });
+      var getInterfacePppoeConnection = await conn
+        .write("/interface/pppoe-server/print", ["?=name=<pppoe-" + code + ">"])
+        .catch((error) => {
+          conn.close();
+          return error;
+        });
     }
     if (getSecret.length > 0) {
       client.exists = true;
@@ -176,6 +188,7 @@ module.exports.mkClientStatus = async function (
       if (client.online) {
         client.download = getInterfaceConnection[0]["tx-byte"];
         client.upload = getInterfaceConnection[0]["rx-byte"];
+        client.service = getInterfacePppoeConnection[0]["service"];
         client.address = getActiveConnection[0]["address"];
         client.mac_address = getActiveConnection[0]["caller-id"];
         client.uptime = getActiveConnection[0].uptime;
