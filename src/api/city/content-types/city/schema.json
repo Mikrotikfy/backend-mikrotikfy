@@ -114,6 +114,12 @@
     "requiresphone": {
       "type": "boolean",
       "default": false
+    },
+    "services": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::service.service",
+      "mappedBy": "city"
     }
   }
 }

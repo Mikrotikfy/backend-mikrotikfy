@@ -25,6 +25,12 @@
       "relation": "oneToMany",
       "target": "api::nap.nap",
       "mappedBy": "technology"
+    },
+    "services": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::service.service",
+      "mappedBy": "technology"
     }
   }
 }

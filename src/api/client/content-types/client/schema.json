@@ -204,6 +204,12 @@
       "relation": "oneToMany",
       "target": "api::legal-note.legal-note",
       "mappedBy": "client"
+    },
+    "services": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::service.service",
+      "mappedBy": "client"
     }
   }
 }

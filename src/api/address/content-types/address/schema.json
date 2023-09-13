@@ -25,6 +25,12 @@
       "relation": "manyToOne",
       "target": "api::client.client",
       "inversedBy": "addresses"
+    },
+    "services": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::service.service",
+      "mappedBy": "address"
     }
   }
 }
