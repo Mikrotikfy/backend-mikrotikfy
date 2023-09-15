@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "addresses",
+  "collectionName": "service_addresses",
   "info": {
-    "singularName": "address",
-    "pluralName": "addresses",
-    "displayName": "address"
+    "singularName": "service-address",
+    "pluralName": "service-addresses",
+    "displayName": "service-address"
   },
   "options": {
     "draftAndPublish": true
@@ -18,13 +18,13 @@
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::neighborhood.neighborhood",
-      "inversedBy": "addresses"
+      "inversedBy": "service_addresses"
     },
-    "client": {
+    "service": {
       "type": "relation",
       "relation": "manyToOne",
-      "target": "api::client.client",
-      "inversedBy": "addresses"
+      "target": "api::service.service",
+      "inversedBy": "service_addresses"
     }
   }
 }

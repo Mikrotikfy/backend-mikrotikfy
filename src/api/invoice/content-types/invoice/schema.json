@@ -71,6 +71,12 @@
       "relation": "manyToMany",
       "target": "api::legal-note.legal-note",
       "inversedBy": "invoices"
+    },
+    "service": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::service.service",
+      "inversedBy": "invoices"
     }
   }
 }

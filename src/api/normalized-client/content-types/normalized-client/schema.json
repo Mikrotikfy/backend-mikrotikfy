@@ -1,0 +1,62 @@
+{
+  "kind": "collectionType",
+  "collectionName": "normalized_clients",
+  "info": {
+    "singularName": "normalized-client",
+    "pluralName": "normalized-clients",
+    "displayName": "normalized-client"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "active": {
+      "type": "boolean"
+    },
+    "indebt": {
+      "type": "boolean"
+    },
+    "code": {
+      "type": "string"
+    },
+    "dni": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "wifi_ssid": {
+      "type": "string"
+    },
+    "wifi_password": {
+      "type": "string"
+    },
+    "newModel": {
+      "type": "integer"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string"
+    },
+    "ipmodel": {
+      "type": "integer"
+    },
+    "balance": {
+      "type": "integer"
+    },
+    "billingmonth": {
+      "type": "integer"
+    },
+    "billingyear": {
+      "type": "integer"
+    },
+    "operator": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
+    }
+  }
+}

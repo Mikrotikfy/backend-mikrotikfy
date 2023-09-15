@@ -110,6 +110,12 @@
     },
     "time": {
       "type": "datetime"
+    },
+    "service": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::service.service",
+      "inversedBy": "tickets"
     }
   }
 }

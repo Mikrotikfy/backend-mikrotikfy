@@ -37,6 +37,12 @@
       "relation": "oneToMany",
       "target": "api::address.address",
       "mappedBy": "neighborhood"
+    },
+    "service_addresses": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::service-address.service-address",
+      "mappedBy": "neighborhood"
     }
   }
 }

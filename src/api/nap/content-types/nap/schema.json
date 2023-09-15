@@ -50,6 +50,12 @@
     },
     "ports": {
       "type": "integer"
+    },
+    "services": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::service.service",
+      "mappedBy": "naps"
     }
   }
 }

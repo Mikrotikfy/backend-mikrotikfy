@@ -50,6 +50,12 @@
     },
     "clienttype": {
       "type": "string"
+    },
+    "service": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::service.service",
+      "inversedBy": "legal_notes"
     }
   }
 }

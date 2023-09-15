@@ -35,6 +35,12 @@
       "relation": "oneToOne",
       "target": "api::staticip.staticip",
       "mappedBy": "device"
+    },
+    "services": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::service.service",
+      "mappedBy": "mac_addresses"
     }
   }
 }

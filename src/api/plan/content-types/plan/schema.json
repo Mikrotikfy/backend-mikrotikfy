@@ -32,6 +32,12 @@
       "relation": "oneToMany",
       "target": "api::offer.offer",
       "mappedBy": "plan"
+    },
+    "services": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::service.service",
+      "mappedBy": "plan"
     }
   }
 }

@@ -46,6 +46,12 @@
       "relation": "manyToOne",
       "target": "api::city.city",
       "inversedBy": "debtmovements"
+    },
+    "service": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::service.service",
+      "inversedBy": "debtmovements"
     }
   }
 }

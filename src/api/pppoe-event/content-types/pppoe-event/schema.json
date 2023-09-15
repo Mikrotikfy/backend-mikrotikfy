@@ -20,6 +20,12 @@
       "relation": "manyToOne",
       "target": "api::client.client",
       "inversedBy": "pppoe_events"
+    },
+    "service": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::service.service",
+      "inversedBy": "pppoe_events"
     }
   }
 }
