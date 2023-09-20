@@ -134,6 +134,33 @@
       "relation": "oneToMany",
       "target": "api::legal-note.legal-note",
       "mappedBy": "service"
+    },
+    "normalized_client": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::normalized-client.normalized-client",
+      "inversedBy": "services"
+    },
+    "wifi_ssid": {
+      "type": "string"
+    },
+    "wifi_password": {
+      "type": "string"
+    },
+    "newModel": {
+      "type": "integer"
+    },
+    "ipmodel": {
+      "type": "integer"
+    },
+    "balance": {
+      "type": "integer"
+    },
+    "billingmonth": {
+      "type": "integer"
+    },
+    "billingyear": {
+      "type": "integer"
     }
   }
 }

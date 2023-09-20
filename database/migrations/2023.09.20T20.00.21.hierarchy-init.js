@@ -3,6 +3,10 @@ module.exports = {
     try {
       strapi.log.info('Beginning hierarchy migration...');
       let totalDatabaseHits = 0
+      // Organiza los resultados en un objeto
+      var relationalClients = 0
+      var fallbackClients = 0
+      const clientsObject = {};
 
       const clients = await knex('clients')
       .select(
@@ -78,21 +82,8 @@ module.exports = {
 
       .leftJoin('addresses_neighborhood_links', 'addresses.id', 'addresses_neighborhood_links.address_id')
       .leftJoin('neighborhoods', 'addresses_neighborhood_links.neighborhood_id', 'neighborhoods.id')
-      .stream()
-      .on('data', (row) => {
-        // Procesa cada fila de datos aquí
-        totalDatabaseHits++
-      })
-      .on('end', () => {
-        // Este evento se dispara cuando se completan todos los datos
-        console.log('Streaming completado. Total de hits de base de datos: ', totalDatabaseHits);
-        knex.destroy(); // Cierra la conexión de Knex.js cuando hayas terminado
-      })
-      // Organiza los resultados en un objeto
-      return
-      var relationalClients = 0
-      var fallbackClients = 0
-      const clientsObject = {};
+      .where('clients.id', '<', 3)
+      // .where('clients.id', '>', 19999)
       clients.forEach((row) => {
         const clientId = row.id;
         if (!clientsObject[clientId]) {
@@ -101,6 +92,22 @@ module.exports = {
             dni: row.dni,
             name: row.name,
             code: row.code,
+            active: row.active,
+            indebt: row.indebt,
+            wifi_ssid: row.wifi_ssid,
+            wifi_password: row.wifi_password,
+            newModel: row.newModel || 0,
+            phone: row.phone,
+            email: row.email,
+            ipmodel: row.ipmodel,
+            balance: row.balance,
+            billingmonth: row.billingmonth,
+            billingyear: row.billingyear,
+            stratum: row.stratum,
+            opticalpower: row.opticalpower,
+            signed: row.signed,
+            signature: row.signature,
+            corporate: row.corporate,
             fallback_address: row.address,
             fallback_neighborhood: row.fallback_neighborhood,
             client: clientId,
@@ -186,8 +193,8 @@ module.exports = {
         // remove all addresses but the first one
         clientsObject[clientId].addresses = clientsObject[clientId].addresses.slice(0, 1);
         strapi.log.info(`Loading ${clientId}...`);
-      });      
-      // loop through the clientsObject, create a object with dni as key, containing a subkey named as the current user field named "code", containing the clientObject of the current index. If another entry is found with an existing dni, add another entry on the curren object named with the "code" of the current clientObject info. If dni is equals to zero, object key will be the client id.
+        totalDatabaseHits++
+      })
       const totalClients = clientsObject.length;
       const clientsObjectByDni = {};
       for (const [key, value] of Object.entries(clientsObject)) {
@@ -208,15 +215,39 @@ module.exports = {
           if (!clientsObjectByDni[value.dni]) {
             clientsObjectByDni[value.dni] = {};
           }
-          clientsObjectByDni[value.dni][value.code] = value;
+          clientsObjectByDni[value.dni][value.code] = value
         }
       }
       // loop through the clientsObjectByDni, loop through the subkeys, and loop through the addresses array, create the new addresses, store the new address id. link the address neighborhood. Create a new service on its respective table named services, and link the address. Then, update the client with the new service id.
       for (const [key, value] of Object.entries(clientsObjectByDni)) {
+        await knex.from('normalized_clients').insert({
+          active: value[Object.keys(value)[0]].active,
+          indebt: value[Object.keys(value)[0]].indebt,
+          code: value[Object.keys(value)[0]].code,
+          dni: value[Object.keys(value)[0]].dni,
+          name: value[Object.keys(value)[0]].name,
+          phone: value[Object.keys(value)[0]].phone,
+          email: value[Object.keys(value)[0]].email,
+          created_at: new Date(),
+          published_at: new Date()
+        })
+        const lastInsertedNormalizedClient = await knex.from('normalized_clients').orderBy('id', 'desc').first().select('id');
         for (const [subkey, subvalue] of Object.entries(value)) {
           await knex.from('services').insert({
             name: subvalue.clienttypoe === 1 ? 'INTERNET' : 'TELEVISION',
             code: subvalue.code,
+            stratum: subvalue.stratum,
+            opticalpower: subvalue.opticalpower,
+            signed: subvalue.signed,
+            signature: subvalue.signature,
+            corporate: subvalue.corporate,
+            wifi_ssid: subvalue.wifi_ssid,
+            wifi_password: subvalue.wifi_password,
+            new_model: subvalue.newModel,
+            ipmodel: subvalue.ipmodel,
+            balance: subvalue.balance,
+            billingmonth: subvalue.billingmonth,
+            billingyear: subvalue.billingyear,
             created_at: new Date(),
             published_at: new Date(),
           })
@@ -225,9 +256,10 @@ module.exports = {
           })
           // insert service relationships, client, clienttype, city, offer, technology
           const lastInsertedService = await knex.from('services').orderBy('id', 'desc').first().select('id');
-          await knex.from('services_client_links').insert({
+          
+          await knex.from('services_normalized_client_links').insert({
             service_id: lastInsertedService.id,
-            client_id: subvalue.client
+            normalized_client_id: lastInsertedNormalizedClient.id
           })
           .catch((error) => {
             strapi.log.error(error);
@@ -263,7 +295,6 @@ module.exports = {
           if (subvalue.mac_addresses && subvalue.mac_addresses.length > 0) {
             for (let i = 0; i < subvalue.mac_addresses.length; i++) {
               const mac_address_id = subvalue.mac_addresses[i];
-              console.log(mac_address_id, lastInsertedService.id)
               await knex.from('services_mac_addresses_links').insert({
                 service_id: lastInsertedService.id,
                 device_id: mac_address_id,
@@ -455,7 +486,7 @@ module.exports = {
       strapi.log.info(`Total clients: ${totalClients}`);
       strapi.log.info(`Relational clients: ${relationalClients}`);
       strapi.log.info(`Fallback clients: ${fallbackClients}`);
-      return
+      console.log('Streaming completado. Total de hits de base de datos: ', totalDatabaseHits);  
     } catch (error) {
       strapi.log.error(error);
     }
