@@ -8,7 +8,7 @@ module.exports.mkGetSecrets = async function (mikrotikHost) {
     });
     // eslint-disable-next-line no-unused-vars
     var com1 = await conn.write("/ppp/secret/getall", [
-      "=.proplist=last-caller-id,name",
+      "=.proplist=last-caller-id,name,profile,last-logged-out",
     ]).catch((err) => {
       conn.close();
       console.log(err);

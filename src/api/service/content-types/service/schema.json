@@ -161,6 +161,12 @@
     },
     "billingyear": {
       "type": "integer"
+    },
+    "active": {
+      "type": "boolean"
+    },
+    "indebt": {
+      "type": "boolean"
     }
   }
 }

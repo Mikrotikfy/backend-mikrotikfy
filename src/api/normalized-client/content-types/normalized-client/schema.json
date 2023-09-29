@@ -12,15 +12,6 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "active": {
-      "type": "boolean"
-    },
-    "indebt": {
-      "type": "boolean"
-    },
-    "code": {
-      "type": "string"
-    },
     "dni": {
       "type": "string"
     },

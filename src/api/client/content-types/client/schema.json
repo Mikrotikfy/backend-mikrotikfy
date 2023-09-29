@@ -61,11 +61,66 @@
     "billingyear": {
       "type": "integer"
     },
+    "stratum": {
+      "type": "integer"
+    },
+    "opticalpower": {
+      "type": "integer"
+    },
+    "signed": {
+      "type": "boolean",
+      "default": false
+    },
+    "signature": {
+      "type": "string"
+    },
+    "update_password": {
+      "type": "boolean"
+    },
+    "corporate": {
+      "type": "boolean"
+    },
     "city": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::city.city",
       "inversedBy": "clients"
+    },
+    "clienttype": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::clienttype.clienttype",
+      "inversedBy": "clients"
+    },
+    "addresses": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::address.address",
+      "mappedBy": "client"
+    },
+    "services": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::service.service",
+      "mappedBy": "client"
+    },
+    "invoices": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::invoice.invoice",
+      "mappedBy": "client"
+    },
+    "legal_notes": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::legal-note.legal-note",
+      "mappedBy": "client"
+    },
+    "tickets": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::ticket.ticket",
+      "mappedBy": "client"
     },
     "mac_addresses": {
       "type": "relation",
@@ -79,12 +134,6 @@
       "target": "api::nap.nap",
       "mappedBy": "clients"
     },
-    "neighborhood": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::neighborhood.neighborhood",
-      "inversedBy": "clients"
-    },
     "passwordchanges": {
       "type": "relation",
       "relation": "oneToMany",
@@ -97,28 +146,22 @@
       "target": "api::plan.plan",
       "inversedBy": "clients"
     },
+    "neighborhood": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::neighborhood.neighborhood",
+      "inversedBy": "clients"
+    },
     "technology": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::technology.technology",
       "inversedBy": "clients"
     },
-    "tickets": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::ticket.ticket",
-      "mappedBy": "client"
-    },
     "operator": {
       "type": "relation",
       "relation": "oneToOne",
       "target": "plugin::users-permissions.user"
-    },
-    "clienttype": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::clienttype.clienttype",
-      "inversedBy": "clients"
     },
     "staticip": {
       "type": "relation",
@@ -131,12 +174,6 @@
       "relation": "manyToOne",
       "target": "api::vlan.vlan",
       "inversedBy": "clients"
-    },
-    "addresses": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::address.address",
-      "mappedBy": "client"
     },
     "offer": {
       "type": "relation",
@@ -168,47 +205,10 @@
       "target": "api::tvspec.tvspec",
       "mappedBy": "client"
     },
-    "stratum": {
-      "type": "integer"
-    },
-    "invoices": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::invoice.invoice",
-      "mappedBy": "client"
-    },
-    "opticalpower": {
-      "type": "integer"
-    },
-    "signed": {
-      "type": "boolean",
-      "default": false
-    },
-    "signature": {
-      "type": "string"
-    },
-    "update_password": {
-      "type": "boolean"
-    },
-    "corporate": {
-      "type": "boolean"
-    },
     "pppoe_events": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::pppoe-event.pppoe-event",
-      "mappedBy": "client"
-    },
-    "legal_notes": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::legal-note.legal-note",
-      "mappedBy": "client"
-    },
-    "services": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::service.service",
       "mappedBy": "client"
     }
   }
