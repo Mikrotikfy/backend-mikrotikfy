@@ -1,15 +1,15 @@
 'use strict';
 
 /**
- * A set of functions called "actions" for `editclientplan`
+ * A set of functions called "actions" for `editserviceplan`
  */
 const { mkSetClientPlanInformation } = require('../../../mikrotik/mkSetClientPlanInformation')
 module.exports = {
-  async editclientplan(ctx) {
+  async editserviceplan(ctx) {
     const {id, plan, kick} = ctx.request.body.data
     const searchPlan = await strapi.service('api::plan.plan').findOne(plan)
     const newClientPlan = searchPlan.mikrotik_name
-    const clientObj = await strapi.service('api::client.client').findOne(id, {populate: ['city', 'city.mikrotiks']})
+    const clientObj = await strapi.service('api::service.service').findOne(id, {populate: ['city', 'city.mikrotiks', 'normalized_client']})
     const removeActive = kick
     const successfulMikrotikResponses = []
     // await strapi.service('api::client.client').update(id, { data: { plan }})
@@ -18,7 +18,7 @@ module.exports = {
       //for loop
       for (let i = 0; i < clientObj.city.mikrotiks.length; i++) {
         const mikrotikHost = clientObj.city.mikrotiks[i].ip
-        const res = await mkSetClientPlanInformation(mikrotikHost, { newClientPlan, dni: clientObj.dni, code: clientObj.code, model: clientObj.newModel, removeActive })
+        const res = await mkSetClientPlanInformation(mikrotikHost, { newClientPlan, dni: clientObj.normalized_client.dni, code: clientObj.code, model: clientObj.newModel, removeActive })
         successfulMikrotikResponses.push(res)
       }
       //INPROVE: detect if the array elements are true or false
@@ -30,7 +30,7 @@ module.exports = {
     } else {
       //normal req
       const mikrotikHost = clientObj.city.mikrotiks[0].ip
-      const res = await mkSetClientPlanInformation(mikrotikHost, { newClientPlan, dni: clientObj.dni, code: clientObj.code, model: clientObj.newModel, removeActive })
+      const res = await mkSetClientPlanInformation(mikrotikHost, { newClientPlan, dni: clientObj.normalized_client.dni, code: clientObj.code, model: clientObj.newModel, removeActive })
       if (res) {
         return true
       } else {
