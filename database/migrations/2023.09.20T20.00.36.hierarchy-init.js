@@ -9,8 +9,7 @@ module.exports = {
         database: 'strapi4',
       },
     })
-    try { // not active yet
-      return
+    try {
       strapi.log.info('Beginning hierarchy migration...');
       let totalDatabaseHits = 0
       // Organiza los resultados en un objeto
