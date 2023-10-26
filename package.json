@@ -10,15 +10,15 @@
     "strapi": "strapi"
   },
   "dependencies": {
-    "@strapi/plugin-i18n": "4.13.4",
-    "@strapi/plugin-users-permissions": "4.13.4",
-    "@strapi/strapi": "4.13.4",
+    "@strapi/plugin-i18n": "4.15.0",
+    "@strapi/plugin-users-permissions": "4.15.0",
+    "@strapi/strapi": "4.15.0",
     "formdata-node": "^5.0.0",
     "mysql": "2.18.1",
     "node-fetch": "2.6.1",
     "node-routeros": "^1.6.9",
     "strapi-plugin-fuzzy-search": "^2.0.5",
-    "strapi-plugin-transformer": "^2.1.0"
+    "strapi-plugin-transformer": "3.1.2"
   },
   "author": {
     "name": "Nicolas Echeverry"

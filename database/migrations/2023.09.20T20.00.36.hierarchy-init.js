@@ -10,6 +10,7 @@ module.exports = {
       },
     })
     try {
+      return
       strapi.log.info('Beginning hierarchy migration...');
       let totalDatabaseHits = 0
       // Organiza los resultados en un objeto

@@ -167,6 +167,12 @@
     },
     "indebt": {
       "type": "boolean"
+    },
+    "address": {
+      "type": "string"
+    },
+    "neighborhood": {
+      "type": "string"
     }
   }
 }

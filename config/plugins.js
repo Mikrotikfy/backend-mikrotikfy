@@ -38,13 +38,13 @@ module.exports = ({ env }) => ({
     config: {
       contentTypes: [
         {
-          uid: "api::client.client",
-          modelName: "client",
-          transliterate: true,
+          uid: "api::service.service",
+          modelName: "service",
+          transliterate: false,
           fuzzysortOptions: {
             characterLimit: 50,
             threshold: -100,
-            limit: 5,
+            limit: 50,
             keys: [
               {
                 name: "address",
