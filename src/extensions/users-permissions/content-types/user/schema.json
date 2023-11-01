@@ -9,8 +9,7 @@
     "displayName": "User"
   },
   "options": {
-    "draftAndPublish": false,
-    "timestamps": true
+    "draftAndPublish": false
   },
   "attributes": {
     "username": {
@@ -146,6 +145,12 @@
       "relation": "oneToMany",
       "target": "api::legal-note.legal-note",
       "mappedBy": "biller"
+    },
+    "preferredclienttype": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::clienttype.clienttype",
+      "inversedBy": "user_preferred_clienttype"
     }
   }
 }

@@ -173,6 +173,15 @@
     },
     "neighborhood": {
       "type": "string"
+    },
+    "client_name": {
+      "type": "string"
+    },
+    "dni": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "string"
     }
   }
 }

@@ -53,6 +53,12 @@
       "relation": "oneToMany",
       "target": "api::service.service",
       "mappedBy": "clienttype"
+    },
+    "user_preferred_clienttype": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "plugin::users-permissions.user",
+      "mappedBy": "preferredclienttype"
     }
   }
 }

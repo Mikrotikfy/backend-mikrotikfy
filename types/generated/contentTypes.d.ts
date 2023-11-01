@@ -587,7 +587,6 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
   options: {
     draftAndPublish: false;
-    timestamps: true;
   };
   attributes: {
     username: Attribute.String &
@@ -682,6 +681,11 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'plugin::users-permissions.user',
       'oneToMany',
       'api::legal-note.legal-note'
+    >;
+    preferredclienttype: Attribute.Relation<
+      'plugin::users-permissions.user',
+      'manyToOne',
+      'api::clienttype.clienttype'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -1123,6 +1127,11 @@ export interface ApiClienttypeClienttype extends Schema.CollectionType {
       'api::clienttype.clienttype',
       'oneToMany',
       'api::service.service'
+    >;
+    user_preferred_clienttype: Attribute.Relation<
+      'api::clienttype.clienttype',
+      'oneToMany',
+      'plugin::users-permissions.user'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -2466,6 +2475,9 @@ export interface ApiServiceService extends Schema.CollectionType {
     indebt: Attribute.Boolean;
     address: Attribute.String;
     neighborhood: Attribute.String;
+    client_name: Attribute.String;
+    dni: Attribute.String;
+    phone: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
