@@ -77,6 +77,12 @@
       "relation": "manyToOne",
       "target": "api::service.service",
       "inversedBy": "invoices"
+    },
+    "cancelled": {
+      "type": "boolean"
+    },
+    "cancelreason": {
+      "type": "string"
     }
   }
 }

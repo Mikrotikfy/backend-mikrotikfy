@@ -1420,6 +1420,8 @@ export interface ApiInvoiceInvoice extends Schema.CollectionType {
       'manyToOne',
       'api::service.service'
     >;
+    cancelled: Attribute.Boolean;
+    cancelreason: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1566,6 +1568,7 @@ export interface ApiLegalNoteLegalNote extends Schema.CollectionType {
       'manyToOne',
       'api::service.service'
     >;
+    cancelled: Attribute.Boolean;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
