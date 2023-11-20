@@ -40,15 +40,6 @@ module.exports = {
   },
 };
 function createComment (client) {
-  const newComment = `${client.code}
-  ${client.technology.name}
-  ${client.addresses && client.addresses.length > 0 ? client.addresses.at(-1).neighborhood.name : client.neighborhood.name}
-  ${client.addresses && client.addresses.length > 0 ? client.addresses.at(-1).address : client.address}
-  ${client.name}
-  ${client.dni}
-  ${client.phone}
-  ${client.offer?.name}
-  ${client.wifi_ssid}
-  ${client.wifi_password}`
+  const newComment = `${client.code} ${client.technology ? client.technology.name : 'No Def.'} ${client.neighborhood} ${client.address} ${client.client_name} ${client.dni} ${client.phone} ${client.offer?.name} ${client.wifi_ssid} ${client.wifi_password}`
   return newComment;
 };
