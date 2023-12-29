@@ -12,10 +12,7 @@ module.exports = {
     const clientObj = await strapi.service('api::service.service').findOne(id, {populate: ['city', 'city.mikrotiks', 'normalized_client']})
     const removeActive = kick
     const successfulMikrotikResponses = []
-    // await strapi.service('api::client.client').update(id, { data: { plan }})
-    // await strapi.services.history.create(clientObj);
     if (clientObj.city.mikrotiks.length > 1) {
-      //for loop
       for (let i = 0; i < clientObj.city.mikrotiks.length; i++) {
         const mikrotikHost = clientObj.city.mikrotiks[i].ip
         const res = await mkSetClientPlanInformation(mikrotikHost, { newClientPlan, dni: clientObj.normalized_client.dni, code: clientObj.code, model: clientObj.newModel, removeActive })

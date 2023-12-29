@@ -32,6 +32,15 @@
       "relation": "manyToOne",
       "target": "api::clienttype.clienttype",
       "inversedBy": "billingperiods"
+    },
+    "errors": {
+      "type": "integer"
+    },
+    "errorList": {
+      "type": "text"
+    },
+    "successes": {
+      "type": "integer"
     }
   }
 }

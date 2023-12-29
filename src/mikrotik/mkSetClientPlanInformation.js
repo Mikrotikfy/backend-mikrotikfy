@@ -5,32 +5,20 @@ module.exports.mkSetClientPlanInformation = async function (
 ) {
   const conn = await APIARNOP(mikrotikHost)
   try {
+    var findSecret = [];
+    var removeActive = [];
     await conn.connect();
-    if (input.model === 1) {
-      // eslint-disable-next-line no-unused-vars
-      var com1 = await conn.write("/ppp/secret/getall", [
-        "=.proplist=.id",
-        "?=name=" + input.code,
-      ]);
-      var removeActive = await conn.write("/ppp/active/getall", [
-        "=.proplist=.id",
-        "?=name=" + input.code,
-      ]);
-    } else {
-      // eslint-disable-next-line no-redeclare
-      var com1 = await conn.write("/ppp/secret/getall", [
-        "=.proplist=.id",
-        "?=name=" + input.dni,
-      ]);
-      // eslint-disable-next-line no-redeclare
-      var removeActive = await conn.write("/ppp/active/getall", [
-        "=.proplist=.id",
-        "?=name=" + input.dni,
-      ]);
-    }
-    if (com1.length > 0) {
+    findSecret = await conn.write("/ppp/secret/getall", [
+      "=.proplist=.id",
+      "?=name=" + input.code,
+    ]);
+    removeActive = await conn.write("/ppp/active/getall", [
+      "=.proplist=.id",
+      "?=name=" + input.code,
+    ]);
+    if (findSecret.length > 0) {
       await conn.write("/ppp/secret/set", [
-        "=.id=" + com1[0][".id"],
+        "=.id=" + findSecret[0][".id"],
         "=profile=" + input.newClientPlan,
       ]);
       if (input.removeActive) {
@@ -43,10 +31,19 @@ module.exports.mkSetClientPlanInformation = async function (
         }
       }
       conn.close();
-      return true;
     } else {
       conn.close();
-      return false;
+    }
+    if (findSecret.length > 0) {
+      return {
+        status: "ok",
+        message: "Se actualizó el plan correctamente",
+      }
+    } else {
+      return {
+        status: "error",
+        message: "No se encontró el cliente",
+      }
     }
   } catch (error) {
     console.log(error);
