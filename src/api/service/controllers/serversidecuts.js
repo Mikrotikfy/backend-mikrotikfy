@@ -6,7 +6,7 @@
 const { mkSetClientPlanInformation } = require('../../../mikrotik/mkSetClientPlanInformation')
 module.exports = {
   async serversidecuts(ctx) {
-    const { city, kick, services: codes, currentBillingPeriod } = ctx.request.body.data
+    const { city, kick, services: codes, currentBillingPeriod, billingmonth, billingyear } = ctx.request.body.data
 
     let searchCity = null
     let processCodesSuccess = []
@@ -28,6 +28,11 @@ module.exports = {
         searchCity = searchResult.results[0]
       }
     })
+    await strapi.service('api::billingperiod.billingperiod').update(currentBillingPeriod, {
+      data: {
+        finished: false
+      }
+    })
 
 
 
@@ -40,7 +45,15 @@ module.exports = {
         if (searchResult.pagination.total === 0) {
           processCodesWithErrors.push({ code: codes[i], error: 'No existe el código' })
         } else if (searchResult.pagination.total === 1) {
+
           const service = searchResult.results[0]
+
+          await strapi.service('api::service.service').update(service.id, {
+            data: {
+              billingmonth,
+              billingyear
+            }
+          })
 
           if (searchCity.mikrotiks.length > 1) {
             for (let i = 0; i < searchCity.mikrotiks.length; i++) {
@@ -72,14 +85,15 @@ module.exports = {
         successes: processCodesSuccess.length,
       })
     }
+    await strapi.service('api::billingperiod.billingperiod').update(currentBillingPeriod, {
+      data: {
+        finished: true
+      }
+    })
     return {
       status: 'ok'
     }
   },
-};
-function createComment (client) {
-  const newComment = `${client.code} ${client.technology ? client.technology.name : 'No Def.'} ${client.neighborhood} ${client.address} ${client.client_name} ${client.dni} ${client.phone} ${client.offer?.name} ${client.wifi_ssid} ${client.wifi_password}`
-  return newComment;
 };
 
 async function updateBillingPeriod (payload) {

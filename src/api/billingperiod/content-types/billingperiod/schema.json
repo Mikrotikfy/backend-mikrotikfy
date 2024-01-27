@@ -41,6 +41,10 @@
     },
     "successes": {
       "type": "integer"
+    },
+    "finished": {
+      "type": "boolean",
+      "default": true
     }
   }
 }
