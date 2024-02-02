@@ -6,7 +6,8 @@
 const { mkSetClientPlanInformation } = require('../../../mikrotik/mkSetClientPlanInformation')
 module.exports = {
   async serversidecuts(ctx) {
-    const { city, kick, services: codes, currentBillingPeriod, billingmonth, billingyear } = ctx.request.body.data
+    console.log(ctx.request.body.data)
+    const { city, kick, services: codes, currentBillingPeriod, billingmonth, billingyear, operator } = ctx.request.body.data
 
     let searchCity = null
     let processCodesSuccess = []
@@ -47,6 +48,22 @@ module.exports = {
         } else if (searchResult.pagination.total === 1) {
 
           const service = searchResult.results[0]
+
+          await strapi.service('api::debtmovement.debtmovement').create({
+            data: {
+              city: searchCity.id,
+              isindebt: true,
+              isretired: false,
+              isBulkDx: true,
+              service: service.id,
+              comment: 'CORTE MORA EN LOTE',
+              technician: operator
+            }
+          }).catch((err) => {
+            console.log(err)
+          })
+
+          console.log(billingmonth, billingyear)
 
           await strapi.service('api::service.service').update(service.id, {
             data: {
