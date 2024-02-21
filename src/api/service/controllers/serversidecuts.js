@@ -6,7 +6,6 @@
 const { mkSetClientPlanInformation } = require('../../../mikrotik/mkSetClientPlanInformation')
 module.exports = {
   async serversidecuts(ctx) {
-    console.log(ctx.request.body.data)
     const { city, kick, services: codes, currentBillingPeriod, billingmonth, billingyear, operator } = ctx.request.body.data
 
     let searchCity = null
@@ -63,10 +62,9 @@ module.exports = {
             console.log(err)
           })
 
-          console.log(billingmonth, billingyear)
-
           await strapi.service('api::service.service').update(service.id, {
             data: {
+              indebt: true,
               billingmonth,
               billingyear
             }
